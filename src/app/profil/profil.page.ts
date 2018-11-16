@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: 'profil.page.html',
   styleUrls: ['profil.page.scss']
 })
+
 export class ProfilPage {}
