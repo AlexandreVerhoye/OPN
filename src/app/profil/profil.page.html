@@ -1,5 +1,4 @@
 <ion-header>
-    <script src="./controllerProfil.js"></script> 
   <ion-toolbar>
     <ion-title>
       Mon compte
@@ -8,15 +7,15 @@
 </ion-header>
 
 <ion-content>
+  
   <h2>Prenom Nom</h2>
 
-  <p>
-  <ion-button shape="round" expand="block" color="primary" fill="outline">Personnaliser mon compte</ion-button>
-  </p>
-  <p>
-   <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="actionSheet()">Paramètres de confidentialité</ion-button>
-  </p>
-  <p>
-  <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="deconnexion()">Deconnexion</ion-button>
-  </p>
+    <p>
+    <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="option()">Paramètres</ion-button>
+    </p>
+
+    <p>
+    <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="deconnexion()">Deconnexion</ion-button>
+    </p>
+
 </ion-content>

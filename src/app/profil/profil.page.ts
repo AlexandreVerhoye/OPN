@@ -12,22 +12,23 @@ export class ProfilPage {
 
   constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
 
-  async deconnexion() {
+  async deconnexion() { //Actions lors de l'appuie sur le bouton "deconnexion"
+
     const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: 'Se deconnecter ?',
+      message: 'Vous pourrez a tout moment vous connecter dans cet onglet.',
       buttons: [
         {
           text: 'Annuler',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            console.log('Confirm Cancel: blah'); //Action pour annulation
           }
         }, {
-          text: 'Okay',
+          text: 'Déconnexion',
           handler: () => {
-            console.log('Confirm Okay');
+            console.log('Confirm Okay'); //Action pour deconnexion
           }
         }
       ]
@@ -36,41 +37,46 @@ export class ProfilPage {
     await alert.present();
   }
 
-  async actionSheet() {
+  async option() { //Actions lors de l'appuie sur le bouton "parametres"
     const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
+      header: 'Paramètres OpenPicNic',
       buttons: [{
-        text: 'Delete',
-        role: 'destructive',
-        icon: 'trash',
+        text: 'Paramètres du compte',
+        icon: 'contact',
         handler: () => {
-          console.log('Delete clicked');
+          console.log('perso. clicked'); //Action pour personalisation du compte
+        }
+      },  {
+        text: 'Paramètres de confidentialité',
+        icon: 'walk',
+        handler: () => {
+          console.log('confidentialité clicked'); //Action pour confidentialité
         }
       }, {
-        text: 'Share',
-        icon: 'share',
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
-        text: 'Play (open modal)',
-        icon: 'arrow-dropright-circle',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      }, {
-        text: 'Favorite',
+        text: 'Donnez-nous une note',
         icon: 'heart',
         handler: () => {
-          console.log('Favorite clicked');
+          console.log('notation clicked'); //Action pour notation
+        }
+      },{
+        text: 'Partager OpenPicNic',
+        icon: 'share',
+        handler: () => {
+          console.log('Share clicked'); //Action pour partager
         }
       }, {
-        text: 'Cancel',
-        icon: 'close',
+        text: 'Contacter OpenPicNic',
+        icon: 'send',
+        handler: () => {
+          console.log('Contacter opn clicked'); //Action pour contact OPN
+        }
+      }, {
+        text: 'Fermer',
+        icon: 'close-circle-outline',
         role: 'cancel',
         handler: () => {
-          console.log('Cancel clicked');
-        }
+          console.log('fermeture clicked'); //Fermeture du actionSheet
+        },
       }]
     });
     await actionSheet.present();
