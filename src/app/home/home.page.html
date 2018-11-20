@@ -4,13 +4,12 @@
 <ion-content>
 
   <h1>OpenPicNic</h1>
-  <h2>Alexandre Verhoye</h2>
+  <h2>{{getNom()}}</h2> 
   <img class="fit-picture" src="assets/icon/favicon.png"/>
 
-        <div class="bouton">
-        <ion-button shape="round" color="primary" fill="outline" expand="block"><ion-icon name="pin"></ion-icon>Ajouter un lieu</ion-button><br />
-        <ion-button shape="round" color="primary" fill="outline">Organiser un picnic</ion-button><br />
-        <ion-button shape="round" color="primary" fill="outline">Recomander un picnic</ion-button><br />
-
+        <div class="largeButton">
+        <ion-button shape="round" color="primary" fill="outline" expand="block" (click)="fonctionNonDisponible()" > <ion-icon name="pin"></ion-icon>Ajouter un lieu</ion-button><br />
+        <ion-button shape="round" color="primary" fill="outline" expand="block" (click)="fonctionNonDisponible()" > <ion-icon name="contacts"></ion-icon>Organiser un picnic</ion-button><br />
+        <ion-button shape="round" color="primary" fill="outline" expand="block" (click)="fonctionNonDisponible()" > <ion-icon name="share"></ion-icon>Recommander un picnic</ion-button><br />
     </div>
 </ion-content>
