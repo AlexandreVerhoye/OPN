@@ -9,7 +9,7 @@ import { ToastController } from '@ionic/angular';
 export class HomePage {
 
   constructor(public toastController: ToastController) {}
-
+  
   public getNom() : string{ //Retourne le prenom et nom de la personne connectée
     var nom = "Alexandre Verhoye"; //(a titre d'exemple en attendant le script)
     return nom;
@@ -21,7 +21,7 @@ export class HomePage {
       duration: 10000,
       position: 'top',
       showCloseButton: true,
-      closeButtonText: 'Ok'
+      closeButtonText: 'Okk'
     });
     toast.present();
   }
