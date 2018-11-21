@@ -1,5 +1,7 @@
 {
   "name": "OPN",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
