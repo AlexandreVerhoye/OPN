@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import leaflet from 'leaflet';
-import { Platform } from 'ionic-angular';
 
 
 @Component({
@@ -12,18 +11,12 @@ export class MapPage {
 	map: any;
 	
 	constructor() {}
-  
-  async  startLocation(){
-    await this.platform.ready();
-  }
 
 	ionViewDidEnter() {
-    //this.loadmap();
     setTimeout(this.loadmap.bind(this), 1000)
   }
 
-  loadmap() {
-
+  async loadmap() {
     this.map = leaflet.map("map").fitWorld();
 
     leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
