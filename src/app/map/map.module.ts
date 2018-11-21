@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MapPage } from './map.page';
 
+
+
 @NgModule({
   imports: [
     IonicModule,
@@ -12,6 +14,6 @@ import { MapPage } from './map.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: MapPage }])
   ],
-  declarations: [MapPage]
+  declarations: [MapPage],
 })
 export class MapPageModule {}
