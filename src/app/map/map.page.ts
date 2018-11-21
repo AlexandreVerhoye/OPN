@@ -25,7 +25,7 @@ export class MapPage {
     }).addTo(this.map);
     this.map.locate({
       setView: true,
-      maxZoom: 10
+      maxZoom: 15 //Zoom de 15 (assez proche)
     }).on('locationfound', (e) => {
       console.log('found you');
       })
