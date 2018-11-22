@@ -36,5 +36,17 @@ export class MapPage {
       })
  
   }
+  
+  refreshLocation(){
+	  
+	  this.map.locate({
+      setView: true,
+      maxZoom: 15, //Zoom de 15 (assez proche)
+	  enableHighAccuracy : true
+    }).on('locationfound', (e) => {
+      console.log('found you');
+      })
+	  
+  }
 
 }
