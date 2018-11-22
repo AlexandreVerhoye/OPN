@@ -5,8 +5,7 @@ ion-button {
 }
 
 .largeButton{
-    margin-top : 100px;
-    
+    margin-top : 100px;   
 }
 
 ion-icon{
@@ -29,7 +28,11 @@ h2{
     float:right;
     position: absolute;
     top : 8%;
-    right : 5%;;
+    right : 5%;
     width: 65px;
     height: 65px;
+}
+ion-content{
+   // --background : url("assets/icon/foret.jpg");
+   --background : lightgrey;
 }
