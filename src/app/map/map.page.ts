@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import leaflet from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -11,9 +12,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 export class MapPage {
 	map: any;
 	
-	constructor(private geolocation: Geolocation) {}
+	constructor(private geolocation: Geolocation, public loadingCtrl: LoadingController) {}
 
 	ionViewDidEnter() {
+    this.chargementCarte();
     setTimeout(this.loadmap.bind(this), 1000)
   }
   
@@ -38,7 +40,6 @@ export class MapPage {
   }
   
   refreshLocation(){
-	  
 	  this.map.locate({
       setView: true,
       maxZoom: 15, //Zoom de 15 (assez proche)
@@ -47,6 +48,14 @@ export class MapPage {
       console.log('found you');
       })
 	  
+  }
+
+  async chargementCarte() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Chargement de la carte',
+      duration: 1000
+    });
+    return await loading.present();
   }
 
 }
