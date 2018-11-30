@@ -35,8 +35,16 @@ export class MapPage {
 	  enableHighAccuracy : true
     }).on('locationfound', (e) => {
       console.log('found you');
+	  let markerGroup = leaflet.featureGroup();
+      let marker: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
+        alert('Vous etes ici');
       })
- 
+	  
+      markerGroup.addLayer(marker);
+      this.map.addLayer(markerGroup);
+      }).on('locationerror', (err) => {
+        alert(err.message);
+    })
   }
   
   refreshLocation(){
