@@ -1,24 +1,56 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Mon compte
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Mon compte
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-  <h2>Prenom Nom</h2>
+    <!--
+        <h2>Prenom Nom</h2>
 
 
-    <div class="boutton">
-      <p>
-        <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="option()">Paramètres</ion-button>
-        </p>
-        <p>
-        <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="deconnexion()">Deconnexion</ion-button>
-        </p>
+        <div class="boutton">
+            <p>
+                <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="option()">Paramètres</ion-button>
+            </p>
+            <p>
+                <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="deconnexion()">Deconnexion</ion-button>
+            </p>
+            <p>
+                <ion-button size="large" expand="block" strong="true" shape="round" color="blue" fill="solid" (click)="connexion()">Connexion</ion-button>
+            </p>
+        </div>
+
+    -->
+    <div ng-app="sample">
+        <form class="form-horizontal" name="registerForm">
+            <div class="form-group">
+
+                <!-- Input with placeholder -->
+
+                <label class="col-md-3 control-label" for="Email">Email</label>
+                <div class="col-md-4">
+                    <ion-input id = "Email" type="email" class="form-control" name="Email" placeholder="Enter Email" ng-model="Email"></ion-input>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="Password">Password</label>
+                <div class="col-md-4">
+                    <ion-input id="Password" type="password" class="form-control" name="Password" placeholder="Enter Password" ng-model="Password" ></ion-input>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <ion-button shape="round" color="primary" (click)="fonctionNonDisponible()"> <ion-icon name="Se connecter"></ion-icon>Se connecter</ion-button><br />
+                </div>
+            </div>
+        </form>
     </div>
-
+    <ion-input></ion-input>
 
 </ion-content>
+
+
+

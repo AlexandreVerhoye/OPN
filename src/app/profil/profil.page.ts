@@ -32,10 +32,33 @@ export class ProfilPage {
           }
         }
       ]
-    });
+      });
 
     await alert.present();
-  }
+    }
+
+    async connexion() {
+        const alert = await this.alertController.create({
+            header: 'Connexion',
+            message: 'Vous pourrez a tout moment vous connecter dans cet onglet.',
+            buttons: [
+                {
+                    text: 'Annuler',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        console.log('Confirm Cancel: blah'); //Action pour annulation
+                    }
+                }, {
+                    text: 'Connexion',
+                    handler: () => {
+                        console.log('Confirm Okay'); //Action pour deconnexion
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
 
   async option() { //Actions lors de l'appuie sur le bouton "parametres"
     const actionSheet = await this.actionSheetController.create({

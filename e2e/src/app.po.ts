@@ -1,4 +1,6 @@
 import { browser, by, element } from 'protractor';
+import { ViewChild } from '@angular/core';
+import { Nav } from '@ionic/angular';
 
 export class AppPage {
   navigateTo() {
@@ -8,4 +10,5 @@ export class AppPage {
   getParagraphText() {
     return element(by.deepCss('app-root ion-content')).getText();
   }
+   
 }

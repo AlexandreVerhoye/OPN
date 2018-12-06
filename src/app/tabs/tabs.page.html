@@ -1,32 +1,40 @@
 <ion-tabs>
+    <ion-tab tab="Inscription">
+        <ion-router-outlet name="inscription"></ion-router-outlet>
+    </ion-tab>
+    <ion-tab tab="home">
+        <ion-router-outlet name="home"></ion-router-outlet>
+    </ion-tab>
+    <ion-tab tab="map">
+        <ion-router-outlet name="map"></ion-router-outlet>
+    </ion-tab>
+    <ion-tab tab="profil">
+        <ion-router-outlet name="profil"></ion-router-outlet>
+    </ion-tab>
 
-  <ion-tab tab="home">
-    <ion-router-outlet name="home"></ion-router-outlet>
-  </ion-tab>
-  <ion-tab tab="map">
-    <ion-router-outlet name="map"></ion-router-outlet>
-  </ion-tab>
-  <ion-tab tab="profil">
-    <ion-router-outlet name="profil"></ion-router-outlet>
-  </ion-tab>
 
-  <ion-tab-bar slot="bottom">
+    <ion-tab-bar slot="bottom">
 
-    <ion-tab-button tab="home" href="/tabs/(home:home)">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Accueil</ion-label>
-    </ion-tab-button>
+        <ion-tab-button tab="inscription" href="/tabs/(inscription:inscription)">
+            <ion-icon name="inscription"></ion-icon>
+            <ion-label>Inscription</ion-label>
+        </ion-tab-button>
 
-    <ion-tab-button tab="map" href="/tabs/(map:map)">
-      <ion-icon name="map"></ion-icon>
-      <ion-label>Map</ion-label>
-    </ion-tab-button>
+        <ion-tab-button tab="home" href="/tabs/(home:home)">
+            <ion-icon name="home"></ion-icon>
+            <ion-label>Accueil</ion-label>
+        </ion-tab-button>
 
-    <ion-tab-button tab="profil" href="/tabs/(profil:profil)">
-      <ion-icon name="contact"></ion-icon>
-      <ion-label>Profil</ion-label>
-    </ion-tab-button>
+        <ion-tab-button tab="map" href="/tabs/(map:map)">
+            <ion-icon name="map"></ion-icon>
+            <ion-label>Map</ion-label>
+        </ion-tab-button>
 
-  </ion-tab-bar>
+        <ion-tab-button tab="profil" href="/tabs/(profil:profil)">
+            <ion-icon name="contact"></ion-icon>
+            <ion-label>Profil</ion-label>
+        </ion-tab-button>
+
+    </ion-tab-bar>
 
 </ion-tabs>

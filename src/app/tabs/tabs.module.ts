@@ -10,6 +10,7 @@ import { TabsPage } from './tabs.page';
 import { ProfilPageModule } from '../profil/profil.module';
 import { MapPageModule } from '../map/map.module';
 import { HomePageModule } from '../home/home.module';
+import { InscriptionPageModule } from '../inscription/inscription.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { HomePageModule } from '../home/home.module';
     TabsPageRoutingModule,
     HomePageModule,
     MapPageModule,
-    ProfilPageModule
+    ProfilPageModule,
+    InscriptionPageModule
   ],
   declarations: [TabsPage]
 })
