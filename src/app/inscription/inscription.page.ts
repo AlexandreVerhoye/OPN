@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Nav } from '@ionic/angular';
 
 @Component({
   selector: 'app-inscription',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inscription.page.scss'],
 })
 export class InscriptionPage implements OnInit {
+
 
   constructor() { }
 
