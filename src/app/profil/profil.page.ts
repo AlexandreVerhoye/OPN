@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { profilscripts } from '../globalscripts/profilscripts'
 import { AlertController } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
 
@@ -10,10 +11,11 @@ import { ActionSheetController } from '@ionic/angular';
 
 export class ProfilPage {
 
-  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) {}
+  constructor(private ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {}
 
-  async deconnexion() { //Actions lors de l'appuie sur le bouton "deconnexion"
-
+  
+  /*Bouton deconnexion qui permet de confirmer ou non la deconnexion */
+  async boutonDeconnexion() { //Actions lors de l'appuie sur le bouton "deconnexion
     const alert = await this.alertController.create({
       header: 'Se deconnecter ?',
       message: 'Vous pourrez a tout moment vous connecter dans cet onglet.',
@@ -28,7 +30,8 @@ export class ProfilPage {
         }, {
           text: 'Déconnexion',
           handler: () => {
-            console.log('Confirm Okay'); //Action pour deconnexion
+            console.log('Script deconnexion : click');
+            this.ps.deconnexion();
           }
         }
       ]
@@ -37,74 +40,52 @@ export class ProfilPage {
     await alert.present();
     }
 
-    async connexion() {
-        const alert = await this.alertController.create({
-            header: 'Connexion',
-            message: 'Vous pourrez a tout moment vous connecter dans cet onglet.',
-            buttons: [
-                {
-                    text: 'Annuler',
-                    role: 'cancel',
-                    cssClass: 'secondary',
-                    handler: (blah) => {
-                        console.log('Confirm Cancel: blah'); //Action pour annulation
-                    }
-                }, {
-                    text: 'Connexion',
-                    handler: () => {
-                        console.log('Confirm Okay'); //Action pour deconnexion
-                    }
-                }
-            ]
-        });
-        await alert.present();
-    }
 
-  async option() { //Actions lors de l'appuie sur le bouton "parametres"
+  /*Bouton option qui permet d'afficher les options */
+  async boutonOption() { //Actions lors de l'appuie sur le bouton "parametres"
     const actionSheet = await this.actionSheetController.create({
       header: 'Paramètres OpenPicNic',
       buttons: [{
         text: 'Paramètres du compte',
         icon: 'contact',
         handler: () => {
-          console.log('perso. clicked'); //Action pour personalisation du compte
+          console.log('Option "Parametre OpenPicNic" : click');
         }
       },  {
         text: 'Paramètres de confidentialité',
         icon: 'walk',
         handler: () => {
-          console.log('confidentialité clicked'); //Action pour confidentialité
+          console.log('Option "Parametre confidentialité" : click');
         }
       }, {
         text: 'Donnez-nous une note',
         icon: 'heart',
         handler: () => {
-          console.log('notation clicked'); //Action pour notation
+          console.log('Option notation : click');
         }
       },{
         text: 'Partager OpenPicNic',
         icon: 'share',
         handler: () => {
-          console.log('Share clicked'); //Action pour partager
+          console.log('Option partage : click');
         }
       }, {
         text: 'Contacter OpenPicNic',
         icon: 'send',
         handler: () => {
-          console.log('Contacter opn clicked'); //Action pour contact OPN
+          console.log('Option "Contacter OPN" : click');
         }
       }, {
         text: 'Fermer',
         icon: 'close-circle-outline',
         role: 'cancel',
         handler: () => {
-          console.log('fermeture clicked'); //Fermeture du actionSheet
+          console.log('Fenetre de paramètres fermée');
         },
       }]
     });
     await actionSheet.present();
   }
-
 }
 
 

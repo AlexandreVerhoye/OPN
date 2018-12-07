@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ToastController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
+import { globalscripts } from '../globalscripts/globalscripts';
+import { profilscripts } from '../globalscripts/profilscripts';
 
 @Component({
   selector: 'app-home',
@@ -8,50 +8,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  public items : Array<any> = [];
-  private nom;
-  constructor(public toastController: ToastController, public http : HttpClient) {
-    this.load();
+  
+  constructor(private gs : globalscripts, private ps : profilscripts) {
+    //this.gs.load();
   }
   
-  public getNom() : string{ //Retourne le prenom et nom de la personne connectée
-    var nom = this.items.toString();
-    //var nom = "Alexandre Verhoye2"; //(a titre d'exemple en attendant le script)
-    return nom;
-  }
+  
 
   ionViewWillEnter() : void
   {
-     this.load();
+     //this.gs.load();
+    this.gs.toastBasic('Bienvenue sur OpenPicNic', 10000);
   }
 
-  async fonctionNonDisponible() {
-    const toast = await this.toastController.create({
-      message: 'Pas disponible pour le moment.',
-      duration: 10000,
-      position: 'top',
-      showCloseButton: true,
-      closeButtonText: 'Okk'
-    });
-    toast.present();
-  }
-
-  load() : void
-   {
-      this.http
-      .get('http://localhost/testOPN/retrieve-data.php')
-      .subscribe((data : any) =>
-      {
-         console.dir(data);
-         this.items = data;
-         console.dir(this.items);
-      },
-      (error : any) =>
-      {
-        console.dir(error);
-      });
-
-   }
+  
 
 
 }

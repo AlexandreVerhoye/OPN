@@ -4,26 +4,23 @@
             Mon compte
         </ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header>  
 
 <ion-content>
-    <!--
-        <h2>Prenom Nom</h2>
+    
+        <h2>{{ps.getNom()}}</h2>
 
 
         <div class="boutton">
             <p>
-                <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="option()">Paramètres</ion-button>
+                <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="boutonOption()">Paramètres</ion-button>
             </p>
             <p>
-                <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="deconnexion()">Deconnexion</ion-button>
-            </p>
-            <p>
-                <ion-button size="large" expand="block" strong="true" shape="round" color="blue" fill="solid" (click)="connexion()">Connexion</ion-button>
+                <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="boutonDeconnexion()">Deconnexion</ion-button>
             </p>
         </div>
 
-    -->
+    
     <div ng-app="sample">
         <form class="form-horizontal" name="registerForm">
             <div class="form-group">
