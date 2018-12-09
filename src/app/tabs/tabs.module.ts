@@ -1,3 +1,4 @@
+import { ConnexionPage } from './../connexion/connexion.page';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,6 @@ import { TabsPage } from './tabs.page';
 import { ProfilPageModule } from '../profil/profil.module';
 import { MapPageModule } from '../map/map.module';
 import { HomePageModule } from '../home/home.module';
-import { InscriptionPageModule } from '../inscription/inscription.module';
 
 @NgModule({
   imports: [
@@ -20,8 +20,7 @@ import { InscriptionPageModule } from '../inscription/inscription.module';
     TabsPageRoutingModule,
     HomePageModule,
     MapPageModule,
-    ProfilPageModule,
-    InscriptionPageModule
+    ProfilPageModule
   ],
   declarations: [TabsPage]
 })

@@ -5,7 +5,6 @@ import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { MapPage } from '../map/map.page';
 import { ProfilPage } from '../profil/profil.page';
-import { InscriptionPage } from '../inscription/inscription.page';
 
 const routes: Routes = [
   {
@@ -32,11 +31,7 @@ const routes: Routes = [
         outlet: 'profil',
         component: ProfilPage
       },
-      {
-        path: 'inscription',
-        outlet: 'inscription',
-        component: InscriptionPage
-      }
+      
     ]
   },
   {

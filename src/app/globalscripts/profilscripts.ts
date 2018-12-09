@@ -6,10 +6,17 @@ export class profilscripts {
 
 constructor(private gs : globalscripts) {}
 
-  /*Function getNom() qui retourne le prenom et le nom de l'utilisateur */
+  /*Function getNom() qui retourne le nom de l'utilisateur */
   public getNom() : string{
-    var nom = "Alexandre Verhoye"; //(a titre d'exemple en attendant le script)
+    var nom = "Verhoye"; //(a titre d'exemple en attendant le script)
     return nom;
+  }
+
+
+  /*Function getPrenom() qui retourne le prenom de l'utilisateur */
+  public getPrenom() : string{
+    var prenom = "Alexandre"; //(a titre d'exemple en attendant le script)
+    return prenom;
   }
 
   /*

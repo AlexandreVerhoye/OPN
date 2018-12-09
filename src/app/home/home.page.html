@@ -4,13 +4,35 @@
 <ion-content class="general">
         <div class ="entête">
             <h1>OpenPicNic</h1>
-            <h2>{{ps.getNom()}}</h2> 
+            <h2><i>Le PicNic, simplifié.</i></h2> 
         </div>
-            <img class="fit-picture" src="assets/icon/favicon.png"/>    
+            <img class="fit-picture" src="assets/icon/favicon.png"/>  
+            <hr/>
+            <h2>Bon {{getDay()}}, {{ps.getPrenom()}} !</h2>
+            
+            <ion-card>
+                <ion-item>
+                    <ion-icon name="pin" slot="start"></ion-icon>
+                    <ion-label>Ajouter un lieu</ion-label>
+                    <ion-button fill="outline" slot="end">Voir</ion-button>
+                </ion-item>
+                <ion-card-content>
+                    OPN est une application communautaire spécialement créée pour le partage de lieu de picnic. Ajoutez-y votre lieu ! 
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+                <ion-item>
+                    <ion-icon name="contacts" slot="start"></ion-icon>
+                    <ion-label>Organiser un picnic</ion-label>
+                    <ion-button fill="outline" slot="end">Voir</ion-button>
+                </ion-item>
+                <ion-card-content>
+                    Partagez un PicNic avec vos proches ! OpenPicNic vous permet de facilement creer de bon moment entre amis par la simple pression d'un bouton
+                </ion-card-content>
+            </ion-card>
             <div class="largeButton">
-                <ion-button shape="round" color="primary" fill="outline" expand="block"  > <ion-icon name="pin"></ion-icon>Ajouter un lieu</ion-button><br />
-                <ion-button shape="round" color="primary" fill="outline" expand="block"  > <ion-icon name="contacts"></ion-icon>Organiser un picnic</ion-button><br />
-                <ion-button shape="round" color="primary" fill="outline" expand="block"  > <ion-icon name="share"></ion-icon>Recommander un picnic</ion-button><br />
+                <ion-button shape="round" color="primary" fill="outline" expand="block" (click)="recommanderOPN()"  > <ion-icon name="share"></ion-icon>Recommander OpenPicNic</ion-button><br />
             </div>
 </ion-content>
 

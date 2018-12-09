@@ -82,6 +82,7 @@ export class globalscripts{
 
     /*Function load qui charge la BDD */
     load() : void
+
     {
         this.http
         .get('http://localhost/testOPN/retrieve-data.php')
