@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfilPage } from './profil.page';
 
 @NgModule({
+
   imports: [
     IonicModule,
     CommonModule,
