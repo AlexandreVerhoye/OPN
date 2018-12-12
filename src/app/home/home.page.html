@@ -3,13 +3,20 @@
 
 <ion-content class="general">
         <div class ="entête">
+        
             <h1>OpenPicNic</h1>
-            <h2><i>Le PicNic, simplifié.</i></h2> 
+            <br/>
+            
+            <h2><i>Le PicNic, simplifié.</i></h2>
         </div>
             <img class="fit-picture" src="assets/icon/favicon.png"/>  
             <hr/>
             <h2>Bon {{getDay()}}, {{ps.getPrenom()}} !</h2>
             
+            <br/>
+            
+            
+        
             <ion-card>
                 <ion-item>
                     <ion-icon name="pin" slot="start"></ion-icon>
@@ -20,6 +27,7 @@
                     OPN est une application communautaire spécialement créée pour le partage de lieu de picnic. Ajoutez-y votre lieu ! 
                 </ion-card-content>
             </ion-card>
+        
 
             <ion-card>
                 <ion-item>
@@ -31,9 +39,21 @@
                     Partagez un PicNic avec vos proches ! OpenPicNic vous permet de facilement creer de bon moment entre amis par la simple pression d'un bouton
                 </ion-card-content>
             </ion-card>
+
+            <ion-card>
+                    
+                <ion-item>
+                    <ion-icon name="alert" slot="start"></ion-icon>
+                    <ion-label>Respecter les lieux</ion-label>
+                </ion-item>
+                <ion-card-content>
+                    OpenPicNic vous invite a respecter les lieux de picnic que vous visitez. Vous serez tenu responsables en cas de degradation.
+                </ion-card-content>
+            </ion-card>
             <div class="largeButton">
                 <ion-button shape="round" color="primary" fill="outline" expand="block" (click)="recommanderOPN()"  > <ion-icon name="share"></ion-icon>Recommander OpenPicNic</ion-button><br />
             </div>
+            
 </ion-content>
 
 
