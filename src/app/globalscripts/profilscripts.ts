@@ -9,29 +9,24 @@ export class profilscripts {
 
   public items: any;
   public nom;
+  public prenom;
 
-constructor(private gs : globalscripts, private http : HttpClient) {}
+constructor(private gs : globalscripts, private http : HttpClient) {
+  this.loadProfil();
+}
 
   /*Function getNom() qui retourne le nom de l'utilisateur */
   public getNom() : string{
-    var nom = "Verhoye"; //(a titre d'exemple en attendant le script)
-    return nom;
+    //var nom = "Verhoye"; //(a titre d'exemple en attendant le script)
+    return this.nom;
   }
 
 
   /*Function getPrenom() qui retourne le prenom de l'utilisateur */
   public getPrenom() : string{
-    var prenom = "Alexandre"; //(a titre d'exemple en attendant le script)
-    return prenom;
+    //var prenom = "Alexandre"; //(a titre d'exemple en attendant le script)
+    return this.prenom;
   }
-
-  /*
-  public getNom() : string{ //Retourne le prenom et nom de la personne connectée
-    var nom = this.items.toString();
-    //var nom = "Alexandre Verhoye2"; //(a titre d'exemple en attendant le script)
-    return nom;
-  }
-  */
 
   
   /*Function deconnexion() correspond au script lorsque l'utilisateur souhaite se deconnecter */
@@ -57,6 +52,7 @@ constructor(private gs : globalscripts, private http : HttpClient) {}
       json = json.replace(re, '');
       let res = JSON.parse(json);
       this.nom = res.nom;
+      this.prenom = res.prenom;
     })
   }
 
