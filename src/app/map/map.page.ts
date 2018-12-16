@@ -3,6 +3,7 @@ import { LoadingController } from '@ionic/angular';
 import leaflet from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { globalscripts } from '../globalscripts/globalscripts';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -41,11 +42,11 @@ export class MapPage {
     }).on('locationfound', (e) => {
       this.gs.toastBasic('Nous vous avons localisé', 1000);
 	  let markerGroup = leaflet.featureGroup();
-      let marker: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
-        alert('Vous etes ici');
+      let maPos: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
+        maPos.bindTooltip("Vous etes ici").openTooltip();;
       })
 	  
-      markerGroup.addLayer(marker);
+      markerGroup.addLayer(maPos);
       this.map.addLayer(markerGroup);
       }).on('locationerror', () => {
         this.gs.toastErreur('Veuille activer votre GPS', 1000);
