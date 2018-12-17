@@ -1,2 +1,2 @@
-# OPN
-OpenPicNic
+# OpenPicNic
+Application de partage de picnic
