@@ -53,10 +53,13 @@ export class MapPage {
 	  
       let maPos: any = leaflet.marker([e.latitude, e.longitude], {icon: maPosIcon});//Marker sur ma position
       leaflet.circle([e.latitude, e.longitude], {radius: 40}).addTo(this.map); //Cercle autour de la position
+
       let markertest : any = leaflet.marker([47.32, 5,7]); //Marker de test 1
       let markertest2 : any = leaflet.marker([(e.latitude-22), (e.longitude-2)]); //Marker de test 2
 
       maPos.bindTooltip("Votre position").on('click', () => {maPos.openTooltip(); }); //Popup "Votre position
+      markertest.bindTooltip(e.latitude +" + "+ e.longitude).on('click', () => {maPos.openTooltip(); }); //Popup sur marker de test
+
       maPos.addTo(this.map); //Ajoute le marker "maPos" a la carte
       markertest.addTo(this.map);
       
