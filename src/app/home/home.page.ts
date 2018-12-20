@@ -31,23 +31,13 @@ export class HomePage {
   }
 
 
-  /*Function getDay() qui permet de recevoir le jour et de le transformer en string*/
-  public getDay() : string{
-    var d = new Date();
-    var weekday = new Array(7);
-
-    weekday[0] = "dimanche";
-    weekday[1] = "lundi";
-    weekday[2] = "mardi";
-    weekday[3] = "mercredi";
-    weekday[4] = "jeudi";
-    weekday[5] = "vendredi";
-    weekday[6] = "samedi";
-
-    var n = weekday[d.getDay()]
-    return n;
-
+  /*Function getMotDuJour qui recupère le mot du jour de profil script selon si l'utilisateur est connecté ou non*/
+  getMotDuJour(){
+    return(this.ps.motDuJour());
   }
+
+
+  
 
 
 

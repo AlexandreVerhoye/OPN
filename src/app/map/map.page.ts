@@ -3,6 +3,7 @@ import { LoadingController } from '@ionic/angular';
 import leaflet from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { globalscripts } from '../globalscripts/globalscripts';
+import { mapscripts } from '../globalscripts/mapscripts';
 
 
 
@@ -14,7 +15,7 @@ import { globalscripts } from '../globalscripts/globalscripts';
 export class MapPage {
 
   map: any;
-  constructor(private geolocation: Geolocation, private loading : LoadingController, private gs : globalscripts) {}
+  constructor(private geolocation: Geolocation, private loading : LoadingController, private gs : globalscripts, private ms : mapscripts) {}
 
   /*Function ionviewDidEnter qui permet de definir les actions lors du chargement de la page */
   ionViewDidEnter() {
@@ -50,6 +51,11 @@ export class MapPage {
 	    enableHighAccuracy : true
     }).on('locationfound', (e) => {
       this.gs.toastBasic('Nous vous avons localisé', 1000);
+
+      this.ms.setMaPosXY(e.latitude, e.longitude);
+
+      console.log("x : " +this.ms.getMaPosX()); //Ma position en X après localisation
+      console.log("y : "+this.ms.getMaPosY()); //Ma position en Yw après localisation
 	  
       let maPos: any = leaflet.marker([e.latitude, e.longitude], {icon: maPosIcon});//Marker sur ma position
       leaflet.circle([e.latitude, e.longitude], {radius: 40}).addTo(this.map); //Cercle autour de la position
