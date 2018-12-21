@@ -12,6 +12,8 @@ import { ConnexionPage } from './connexion.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: ConnexionPage }]),
   ],
-  declarations: [ConnexionPage]
+  declarations: [ConnexionPage],
+
+  exports : [ConnexionPage]
 })
 export class ConnexionPageModule {}

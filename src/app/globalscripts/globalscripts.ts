@@ -23,6 +23,7 @@ export class globalscripts{
 
     public items : Array<any> = [];
     private nom;
+    public testInt : number;
   
 
     /*Toast basic
@@ -97,5 +98,13 @@ export class globalscripts{
           console.dir(error);
         });
 
+    }
+
+    public setNbr(nbr :number){
+      this.testInt=nbr;
+    }
+
+    public getNbr(): string{
+      return("nb test : " + this.testInt);
     }
 }

@@ -26,70 +26,15 @@
         <p>
             <ion-button size="large" expand="block" strong="true" shape="round" color="danger" fill="solid" (click)="boutonDeconnexion()">Deconnexion</ion-button>
         </p>
+        <p>
+            <ion-button size="large" expand="block" strong="true" shape="round" color="success" fill="solid" (click)="presentModal()">modal</ion-button>
+        </p>
+        <p>
+            <ion-button size="large" expand="block" strong="true" shape="round" color="success" fill="solid" (click)="toastInt()">testint</ion-button>
+        </p>
     </div>
     </ion-card-content>
     </ion-card>
-
-    <ion-card>
-        <ion-card-header>
-                <ion-card-title>
-                    Connexion
-                </ion-card-title>
-                <ion-card-subtitle>
-                    Affiché lorsque l'utilisateur doit se connecter (qu'il as un compte)
-                </ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-            <ion-item>
-                <ion-label position="floating">Adresse mail</ion-label>
-                <ion-input [(ngModel)]="connexionMail" type="email" required></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Mot de passe</ion-label>
-                <ion-input [(ngModel)]="connexionPass" type="password"></ion-input>
-            </ion-item>
-            <br>
-            <ion-button size="large" expand="block" strong="true" shape="round" color="primary" fill="solid" (click)="testConnexion()">Se connecter</ion-button>
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-            <ion-card-header>
-                    <ion-card-title>
-                        Inscription
-                    </ion-card-title>
-                    <ion-card-subtitle>
-                        Affiché lorsque l'utilisateur n'as pas de compte
-                    </ion-card-subtitle>
-            </ion-card-header>
-            
-            <ion-card-content>
-                    <ion-item>
-                            <ion-label position="floating">Prenom</ion-label>
-                            <ion-input [(ngModel)]="inscriptionPrenom" type="text"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                            <ion-label position="floating">Nom</ion-label>
-                            <ion-input [(ngModel)]="inscriptionNom" type="text"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                            <ion-label position="floating">Adresse mail</ion-label>
-                            <ion-input [(ngModel)]="inscriptionMail" type="email"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label position="floating">Mot de passe</ion-label>
-                            <ion-input [(ngModel)]="inscriptionPass" type="password"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                                <ion-label position="floating">Repeter le mot de passe</ion-label>
-                                <ion-input [(ngModel)]="inscriptionPass2" type="password"></ion-input>
-                        </ion-item>
-                        <br>
-                        <ion-button size="large" expand="block" strong="true" shape="round" color="success" fill="solid" (click)="testInscription()">S'inscrire</ion-button>
-            </ion-card-content>
-        </ion-card>
-
 
     
     

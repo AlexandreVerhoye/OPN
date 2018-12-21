@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { profilscripts } from '../globalscripts/profilscripts'
 import { AlertController } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { ConnexionPage } from '../connexion/connexion.page';
+import { globalscripts } from '../globalscripts/globalscripts';
 
 @Component({
   selector: 'app-profil',
@@ -11,15 +14,9 @@ import { ActionSheetController } from '@ionic/angular';
 
 export class ProfilPage {
 
-  connexionMail : string;
-  connexionPass : string;
-  inscriptionPrenom : string;
-  inscriptionNom : string;
-  inscriptionMail : string;
-  inscriptionPass : string;
-  inscriptionPass2 : string;
 
-  constructor(private ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {}
+
+  constructor(public modalCtrl: ModalController,private gs : globalscripts, private ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {}
 
   
   /*Bouton deconnexion qui permet de confirmer ou non la deconnexion */
@@ -96,45 +93,20 @@ export class ProfilPage {
   }
 
 
-  /*Function testConnexion qui permet de tester le retour de l'id et du password (en clair) */
-  testConnexion(){
-    if(this.connexionMail!=null || this.connexionPass!=null){
-    console.log("Script testConnexion : click");
-    console.log("Script testConnexion : en cours");
-    console.log(this.connexionMail);
-    console.log(this.connexionPass);
-    console.log("Script testConnexion : succès");
-    }
-    else{
-      console.log("Email ou mot de passe manquant.");
-    }
+  
+
+  async presentModal() {
+    const modal = await this.modalCtrl.create({
+      component: ConnexionPage,
+      componentProps: { value: 123 }
+    });
+    return await modal.present();
   }
 
-
-  /*Function testInscription qui permet de tester le retour de l'id et du password (en clair) */
-  testInscription(){
-    if(this.inscriptionMail!=null || this.inscriptionPass!=null || this.inscriptionPrenom!=null || this.inscriptionNom!=null || this.inscriptionPass2!=null){
-    console.log("Script testConnexion : click");
-    console.log("Script testConnexion : en cours");
-    console.log(this.inscriptionPrenom);
-    console.log(this.inscriptionNom);
-    console.log(this.inscriptionMail);
-    if(this.inscriptionPass==this.inscriptionPass2){
-      console.log("Les deux mots de passes correspondent :")
-      console.log(this.inscriptionPass);
-    }
-    else{
-      console.log("Les deux mots de passes ne correspondent pas :")
-      console.log("Mot de passe 1 : " + this.inscriptionPass);
-      console.log("Mot de passe 2 : " + this.inscriptionPass2);
-    }
-    console.log("Script testConnexion : succès");
+  async toastInt() {
+    this.gs.toastBasic(this.gs.getNbr(), 210);
   }
-  else{
-    console.log("Prenom, nom, mail ou mot de passe manquant.")
-  }
-
-  }
+  
 
 }
 
