@@ -4,6 +4,8 @@ import leaflet from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { globalscripts } from '../globalscripts/globalscripts';
 import { mapscripts } from '../globalscripts/mapscripts';
+import { ModalController } from '@ionic/angular';
+import { AjoutLieuPage } from '../ajout-lieu/ajout-lieu.page';
 
 
 
@@ -15,7 +17,7 @@ import { mapscripts } from '../globalscripts/mapscripts';
 export class MapPage {
 
   map: any;
-  constructor(private geolocation: Geolocation, private loading : LoadingController, private gs : globalscripts, private ms : mapscripts) {}
+  constructor(private modalCtrl : ModalController, private geolocation: Geolocation, private loading : LoadingController, private gs : globalscripts, private ms : mapscripts) {}
 
   /*Function ionviewDidEnter qui permet de definir les actions lors du chargement de la page */
   ionViewDidEnter() {
@@ -100,9 +102,24 @@ export class MapPage {
     //code pour rechercher un lieu
   }
 
-  ajouterLieu(){
+  async ajouterLieu(){
     console.log('Script ajouterLieu : click');
-    //code pour ajouter un lieu
+    
+    this.ms.setMaPosXY;
+
+    const modal = await this.modalCtrl.create({
+      component: AjoutLieuPage,
+      componentProps: { value: 123 }
+    });
+    return await modal.present();
+
+
+
+
+  }
+
+  async ouvrirDetailsLieu(){
+    
   }
   
 }
