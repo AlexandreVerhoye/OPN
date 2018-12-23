@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { MapPage } from './map.page';
 import { AjoutLieuPage } from '../ajout-lieu/ajout-lieu.page';
 import { AjoutLieuPageModule } from '../ajout-lieu/ajout-lieu.module';
+import { DetailsLieuxPage } from '../details-lieux/details-lieux.page';
+import { DetailsLieuxPageModule } from '../details-lieux/details-lieux.module';
+
 
 
 
@@ -15,10 +18,11 @@ import { AjoutLieuPageModule } from '../ajout-lieu/ajout-lieu.module';
     CommonModule,
     FormsModule,
     AjoutLieuPageModule,
+    DetailsLieuxPageModule,
     RouterModule.forChild([{ path: '', component: MapPage }])
   ],
   declarations: [MapPage],
 
-  entryComponents:[AjoutLieuPage],
+  entryComponents:[AjoutLieuPage, DetailsLieuxPage],
 })
 export class MapPageModule {}

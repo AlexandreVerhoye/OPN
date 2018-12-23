@@ -6,6 +6,8 @@ import { globalscripts } from '../globalscripts/globalscripts';
 import { mapscripts } from '../globalscripts/mapscripts';
 import { ModalController } from '@ionic/angular';
 import { AjoutLieuPage } from '../ajout-lieu/ajout-lieu.page';
+import { DetailsLieuxPage } from '../details-lieux/details-lieux.page';
+import { markParentViewsForCheckProjectedViews } from '@angular/core/src/view/util';
 
 
 
@@ -16,6 +18,7 @@ import { AjoutLieuPage } from '../ajout-lieu/ajout-lieu.page';
 })
 export class MapPage {
 
+  locatedState : boolean;
   map: any;
   constructor(private modalCtrl : ModalController, private geolocation: Geolocation, private loading : LoadingController, private gs : globalscripts, private ms : mapscripts) {}
 
@@ -53,6 +56,7 @@ export class MapPage {
 	    enableHighAccuracy : true
     }).on('locationfound', (e) => {
       this.gs.toastBasic('Nous vous avons localisé', 1000);
+      this.locatedState=true;
 
       this.ms.setMaPosXY(e.latitude, e.longitude);
 
@@ -69,11 +73,12 @@ export class MapPage {
       markertest.bindTooltip(e.latitude +" + "+ e.longitude).on('click', () => {maPos.openTooltip(); }); //Popup sur marker de test
 
       maPos.addTo(this.map); //Ajoute le marker "maPos" a la carte
-      markertest.addTo(this.map);
+      markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
       
 
       }).on('locationerror', () => {
         this.gs.toastErreur('Veuillez activer votre GPS', 1000);
+        this.locatedState=false;
     })
     console.log('Script loadMap : succès');
   }
@@ -89,7 +94,9 @@ export class MapPage {
 	  enableHighAccuracy : true
     }).on('locationfound', (e) => {
       this.gs.toastBasic('Nous vous avons localisé', 1000);
+      this.locatedState=true;
       }).on('locationerror', () => {
+        this.locatedState=false;
         this.gs.toastErreur('Veuille activer votre GPS', 1000);
       })
       console.log('Script refreshLocation : succès');
@@ -102,23 +109,40 @@ export class MapPage {
     //code pour rechercher un lieu
   }
 
+
+  /*Function qui permet l'ajout de lieu a l'appuie du bouton d'ajout*/
   async ajouterLieu(){
     console.log('Script ajouterLieu : click');
-    
-    this.ms.setMaPosXY;
 
-    const modal = await this.modalCtrl.create({
-      component: AjoutLieuPage,
-      componentProps: { value: 123 }
-    });
-    return await modal.present();
+      if(this.locatedState==true){
+      this.ms.setMaPosXY;
 
+      const modalAjout = await this.modalCtrl.create({
+        component: AjoutLieuPage
+      });
+      return await modalAjout.present();
+
+  }
+
+  else{
+    this.gs.toastErreur("Impossible de vous localiser !", 2000);
+  }
 
 
 
   }
 
   async ouvrirDetailsLieu(){
+
+
+    const modalDetails = await this.modalCtrl.create({
+      component: DetailsLieuxPage,
+      componentProps: {
+        'x': 0 ,
+        'y': 0
+      }
+    });
+    return await modalDetails.present();
     
   }
   

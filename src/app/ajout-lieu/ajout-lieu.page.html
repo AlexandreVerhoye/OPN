@@ -2,7 +2,7 @@
   <ion-toolbar>
       <ion-buttons slot="start">
           <ion-button (click)="dismiss()">
-              <ion-icon slot="icon-only" name="close"></ion-icon>
+              <ion-icon slot="icon-only" name="close-circle"></ion-icon>
           </ion-button>
       </ion-buttons>
     <ion-title>Ajouter un lieu de PicNic</ion-title>
@@ -11,10 +11,21 @@
 
 <ion-content padding>
 
-<h1><b>Le lieu sera créé sur votre position actuelle !</b></h1>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Le lieu de picnic sera créé sur votre position actuelle</ion-card-subtitle>
+    <ion-card-title>Votre position :</ion-card-title>
+  </ion-card-header>
+<ion-card-content>
+  <p>X <ion-icon name="arrow-dropright"></ion-icon> {{getX()}}</p>
+  <p>Y <ion-icon name="arrow-dropright"></ion-icon> {{getY()}}</p>
+</ion-card-content>
+</ion-card>
 
-  <h2>{{getX()}}</h2>
-  <h2>{{getY()}}</h2>
+  <ion-item>
+    <ion-label position="floating">Description du lieu :</ion-label>
+    <ion-textarea [(ngModel)]="descLieu" type="text"></ion-textarea>
+</ion-item>
 
   <ion-button size="large" expand="block" strong="true" shape="round" color="success" fill="solid" (click)="creerLieu()">Ajouter a la carte</ion-button>
 
