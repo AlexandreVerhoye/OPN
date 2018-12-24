@@ -4,6 +4,9 @@ import { AlertController } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ConnexionPage } from '../connexion/connexion.page';
+import { ReglageProfilPage} from '../reglage-profil/reglage-profil.page';
+import { ReglageConfidPage } from '../reglage-confid/reglage-confid.page';
+import { BienvenuePage } from '../bienvenue/bienvenue.page';
 import { globalscripts } from '../globalscripts/globalscripts';
 
 @Component({
@@ -54,12 +57,14 @@ export class ProfilPage {
         text: 'Paramètres du compte',
         icon: 'contact',
         handler: () => {
+          this.reglageProfil();
           console.log('Option "Parametre OpenPicNic" : click');
         }
       },  {
         text: 'Paramètres de confidentialité',
         icon: 'walk',
         handler: () => {
+          this.reglageConfig();
           console.log('Option "Parametre confidentialité" : click');
         }
       }, {
@@ -95,10 +100,34 @@ export class ProfilPage {
 
   
 
-  async presentModal() {
+  async connexionPageDev() {
     const modal = await this.modalCtrl.create({
       component: ConnexionPage,
       componentProps: { value: 123 }
+    });
+    return await modal.present();
+  }
+
+  async bienvenuePageDev() {
+    const modal = await this.modalCtrl.create({
+      component: BienvenuePage
+    });
+    return await modal.present();
+  }
+
+
+  async reglageProfil() {
+    const modal = await this.modalCtrl.create({
+      component: ReglageProfilPage
+    });
+    return await modal.present();
+  }
+
+  
+
+  async reglageConfig() {
+    const modal = await this.modalCtrl.create({
+      component: ReglageConfidPage
     });
     return await modal.present();
   }

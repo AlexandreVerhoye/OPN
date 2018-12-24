@@ -37,6 +37,9 @@ export class MapPage {
     this.map = leaflet.map("map").fitWorld();
     let markerGroup = leaflet.featureGroup(); //FeatureGroup pour les lieux de picnic
 
+    let markertest : any = leaflet.marker([47.32, 5,7]); //Marker de test 1
+    markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
+
     
     var maPosIcon = leaflet.icon({
       iconUrl: '/src/app/map/maPos.png',
@@ -66,14 +69,9 @@ export class MapPage {
       let maPos: any = leaflet.marker([e.latitude, e.longitude], {icon: maPosIcon});//Marker sur ma position
       leaflet.circle([e.latitude, e.longitude], {radius: 40}).addTo(this.map); //Cercle autour de la position
 
-      let markertest : any = leaflet.marker([47.32, 5,7]); //Marker de test 1
-      let markertest2 : any = leaflet.marker([(e.latitude-22), (e.longitude-2)]); //Marker de test 2
-
       maPos.bindTooltip("Votre position").on('click', () => {maPos.openTooltip(); }); //Popup "Votre position
-      markertest.bindTooltip(e.latitude +" + "+ e.longitude).on('click', () => {maPos.openTooltip(); }); //Popup sur marker de test
-
       maPos.addTo(this.map); //Ajoute le marker "maPos" a la carte
-      markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
+
       
 
       }).on('locationerror', () => {
@@ -138,8 +136,8 @@ export class MapPage {
     const modalDetails = await this.modalCtrl.create({
       component: DetailsLieuxPage,
       componentProps: {
-        'x': 0 ,
-        'y': 0
+        'x': 23 ,
+        'y': 34
       }
     });
     return await modalDetails.present();

@@ -6,6 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { ProfilPage } from './profil.page';
 import { ConnexionPage } from '../connexion/connexion.page';
 import { ConnexionPageModule } from '../connexion/connexion.module';
+import { ReglageProfilPage } from '../reglage-profil/reglage-profil.page'
+import { ReglageProfilPageModule } from '../reglage-profil/reglage-profil.module'
+import { ReglageConfidPageModule } from '../reglage-confid/reglage-confid.module';
+import { ReglageConfidPage } from '../reglage-confid/reglage-confid.page';
+import { BienvenuePageModule } from '../bienvenue/bienvenue.module';
+import { BienvenuePage } from '../bienvenue/bienvenue.page';
 
 @NgModule({
   imports: [
@@ -13,10 +19,13 @@ import { ConnexionPageModule } from '../connexion/connexion.module';
     CommonModule,
     FormsModule,
     ConnexionPageModule,
+    ReglageProfilPageModule,
+    ReglageConfidPageModule,
+    BienvenuePageModule,
     RouterModule.forChild([{ path: '', component: ProfilPage }]),
   ],
   declarations: [ProfilPage],
 
-  entryComponents:[ConnexionPage]
+  entryComponents:[ConnexionPage, ReglageProfilPage, ReglageConfidPage, BienvenuePage]
 })
 export class ProfilPageModule {}
