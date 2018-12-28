@@ -78,7 +78,6 @@ constructor(private gs : globalscripts, private http : HttpClient) {
 
   /*Function loadProfil() qui permet de recuperer le profil de l'utilisateur*/
   /*En cours de dev*/
-  /* //Commenté pour test sans BDD
   loadProfil(){
     let data:Observable<any>;
     data = this.http.get('http://localhost/testOPN/retrieve-data.php')
@@ -93,8 +92,8 @@ constructor(private gs : globalscripts, private http : HttpClient) {
       this.nom = res.nom;
       this.prenom = res.prenom;
     })
-    */
   }
+}
 
   
 

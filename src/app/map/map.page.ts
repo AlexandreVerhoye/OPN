@@ -40,6 +40,16 @@ export class MapPage {
     let markertest : any = leaflet.marker([47.32, 5,7]); //Marker de test 1
     markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
 
+     for (var lieu in this.ms.items){ //On parcours les lieux de notre liste des lieux (items) et on ajoute un marker pour chacun d'entre eux
+        let latitude = this.ms.items[lieu].latitude;
+        console.log(latitude);
+        let longitude = this.ms.items[lieu].longitude;
+        console.log(longitude);
+        let markertest : any = leaflet.marker([latitude, longitude]);
+        markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
+      }
+  
+
     
     var maPosIcon = leaflet.icon({
       iconUrl: '/src/app/map/maPos.png',
@@ -62,7 +72,6 @@ export class MapPage {
       this.locatedState=true;
 
       this.ms.setMaPosXY(e.latitude, e.longitude);
-
       console.log("x : " +this.ms.getMaPosX()); //Ma position en X après localisation
       console.log("y : "+this.ms.getMaPosY()); //Ma position en Yw après localisation
 	  
