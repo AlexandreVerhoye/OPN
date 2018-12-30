@@ -37,16 +37,13 @@ export class MapPage {
     this.map = leaflet.map("map").fitWorld();
     let markerGroup = leaflet.featureGroup(); //FeatureGroup pour les lieux de picnic
 
-    let markertest : any = leaflet.marker([47.32, 5,7]); //Marker de test 1
-    markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
-
      for (var lieu in this.ms.items){ //On parcours les lieux de notre liste des lieux (items) et on ajoute un marker pour chacun d'entre eux
         let latitude = this.ms.items[lieu].latitude;
-        console.log(latitude);
         let longitude = this.ms.items[lieu].longitude;
-        console.log(longitude);
-        let markertest : any = leaflet.marker([latitude, longitude]);
-        markertest.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(); });
+        let id =  0;
+        id = this.ms.items[lieu].idLieu;
+        let marker : any = leaflet.marker([latitude, longitude]);
+        marker.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(latitude, longitude, id); });
       }
   
 
@@ -139,14 +136,14 @@ export class MapPage {
 
   }
 
-  async ouvrirDetailsLieu(){
-
+  async ouvrirDetailsLieu(latitude : number, longitude : number, id : number){
 
     const modalDetails = await this.modalCtrl.create({
       component: DetailsLieuxPage,
       componentProps: {
-        'x': 23 ,
-        'y': 34
+        'latitude': latitude ,
+        'longitude': longitude,
+        'id' : id
       }
     });
     return await modalDetails.present();
