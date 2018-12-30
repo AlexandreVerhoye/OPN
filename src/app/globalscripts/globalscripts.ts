@@ -3,6 +3,7 @@ import { LoadingController } from '@ionic/angular';
 import { Injectable } from'@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 // Exemple de commentaire :
 
     /*Type Nom Utilité
