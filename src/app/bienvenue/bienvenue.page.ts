@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component} from '@angular/core';
 
 @Component({
-  selector: 'app-bienvenue',
+
   templateUrl: './bienvenue.page.html',
   styleUrls: ['./bienvenue.page.scss'],
 })
-export class BienvenuePage implements OnInit {
-
-  constructor(private modalCtrl : ModalController) { }
-
-  ngOnInit() {
-  }
-
-
-  dismiss(){
-    this.modalCtrl.dismiss();
-  }
-
-}
+export class BienvenuePage{
+  constructor() { }
+};

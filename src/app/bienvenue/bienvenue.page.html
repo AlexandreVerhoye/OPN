@@ -13,7 +13,7 @@
 
   <ion-slides pager="true">
     <ion-slide>
-      <h1>Slide 1</h1>
+      <h1><a href='/app/tabs/(home:home)'>Slide 1</a></h1>
     </ion-slide>
   
     <ion-slide>
@@ -26,3 +26,10 @@
   </ion-slides>
 
 </ion-content>
+
+<script>
+  var slides = document.querySelector('ion-slides');
+    slides.options = {
+      effect: 'flip'
+    }
+</script>
