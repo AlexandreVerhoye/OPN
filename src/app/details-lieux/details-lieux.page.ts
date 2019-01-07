@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { loadElementInternal } from '@angular/core/src/render3/util';
 import { Http } from '@angular/http';
+import { mapscripts } from '../globalscripts/mapscripts';
 
 @Component({
   selector: 'app-details-lieux',
@@ -16,7 +17,7 @@ export class DetailsLieuxPage implements OnInit {
   id : number;
   lieu : any = {};
   
-    constructor(navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http) { 
+    constructor(navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, private ms : mapscripts) { 
       this.id = navParams.get('id');
       this.http = http;
       this.loadLieu();
@@ -31,7 +32,7 @@ export class DetailsLieuxPage implements OnInit {
   }
 
   public loadLieu(){
-    var link = 'http://localhost/testOPN/api.php';
+    var link = 'http://localhost/testOPN/retrieve-lieu.php';
     var myData = JSON.stringify({idLieu: this.id});
  
  this.http.post(link, myData)

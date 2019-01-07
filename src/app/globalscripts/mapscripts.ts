@@ -1,6 +1,7 @@
 import { Injectable } from'@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Platform } from '@ionic/angular';
 
 @Injectable()
 export class mapscripts {
@@ -9,7 +10,7 @@ export class mapscripts {
   public maPosY : number; //Position Y lors de la localisation
   public items : any;
 
-  constructor(private http : HttpClient){
+  constructor(private http : HttpClient, private platform : Platform){
     this.loadLieux();
   }
 
@@ -40,6 +41,19 @@ export class mapscripts {
     })
   }
 
+
+  public navigateTo(x : number, y : number){
+    let destination = x + ',' + y;
+
+    if(this.platform.is('ios')){
+      window.open('maps://?q=' + destination, '_system');
+    } else {
+      let label = encodeURI('My Label');
+      window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');
+    }
+      }
+
+      
 
 
 

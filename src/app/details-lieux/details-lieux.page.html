@@ -14,7 +14,9 @@
                 <ion-item>
                     Y :  <ion-badge item-end>{{lieu.longitude}}</ion-badge>
                 </ion-item>
-             <ion-spinner name="crescent" color="danger"></ion-spinner>
+                <ion-button size="large" expand="block" strong="true" shape="round" color="primary" fill="solid" (click)="ms.navigateTo(lieu.latitude, lieu.longitude)">Naviguer vers le lieu</ion-button>
+                
+             
         </ion-card-content>
     </ion-card>
 
