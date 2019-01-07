@@ -2,6 +2,8 @@ import { Injectable } from'@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
+import { globalscripts } from './globalscripts';
+
 
 @Injectable()
 export class mapscripts {
@@ -10,7 +12,7 @@ export class mapscripts {
   public maPosY : number; //Position Y lors de la localisation
   public items : any;
 
-  constructor(private http : HttpClient, private platform : Platform){
+  constructor(private http : HttpClient, private platform : Platform, private gs:globalscripts){
     this.loadLieux();
   }
 
@@ -38,17 +40,19 @@ export class mapscripts {
     data.subscribe(result =>{
       this.items = result;
       console.log(this.items);
-    })
+    }) 
   }
 
 
   public navigateTo(x : number, y : number){
-    let destination = x + ',' + y;
-      
-
-
-
-
+    //To be done
+    this.gs.toastErreur("Fonction indisponible pour le moment", 10000);
+    
   }
       
+
+
+
+
 }
+      

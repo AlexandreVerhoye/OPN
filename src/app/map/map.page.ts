@@ -36,18 +36,7 @@ export class MapPage {
 
     this.map = leaflet.map("map").fitWorld();
     let markerGroup = leaflet.featureGroup(); //FeatureGroup pour les lieux de picnic
-
-     for (var lieu in this.ms.items){ //On parcours les lieux de notre liste des lieux (items) et on ajoute un marker pour chacun d'entre eux
-        let latitude = this.ms.items[lieu].latitude;
-        let longitude = this.ms.items[lieu].longitude;
-        let id =  0;
-        id = this.ms.items[lieu].idLieu;
-        let marker : any = leaflet.marker([latitude, longitude]);
-        marker.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(latitude, longitude, id); });
-      }
-  
-
-    
+    this.displayMarker();
     var maPosIcon = leaflet.icon({
       iconUrl: '/src/app/map/maPos.png',
       iconSize: [30, 30],
@@ -132,8 +121,6 @@ export class MapPage {
     this.gs.toastErreur("Impossible de vous localiser !", 2000);
   }
 
-
-
   }
 
   async ouvrirDetailsLieu(latitude : number, longitude : number, id : number){
@@ -148,6 +135,17 @@ export class MapPage {
     });
     return await modalDetails.present();
     
+  }
+
+  async displayMarker(){
+    for (var lieu in this.ms.items){ //On parcours les lieux de notre liste des lieux (items) et on ajoute un marker pour chacun d'entre eux
+        let latitude = this.ms.items[lieu].latitude;
+        let longitude = this.ms.items[lieu].longitude;
+        let id =  0;
+        id = this.ms.items[lieu].idLieu;
+        let marker : any = leaflet.marker([latitude, longitude]);
+        marker.addTo(this.map).on('click', () => {this.ouvrirDetailsLieu(latitude, longitude, id); });
+      }
   }
   
 }

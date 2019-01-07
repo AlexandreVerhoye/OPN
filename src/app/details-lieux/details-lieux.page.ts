@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { loadElementInternal, stringify } from '@angular/core/src/render3/util';
 import { Http } from '@angular/http';
 import { mapscripts } from '../globalscripts/mapscripts';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-details-lieux',
@@ -16,7 +17,6 @@ import { mapscripts } from '../globalscripts/mapscripts';
 export class DetailsLieuxPage implements OnInit {
   id : number;
   lieu : any = {};
-  wc : string;
   
     constructor(navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, private ms : mapscripts) { 
       this.id = navParams.get('id');
@@ -50,12 +50,6 @@ export class DetailsLieuxPage implements OnInit {
    this.lieu.longitude = res[lieu].longitude;
    this.lieu.nomLieu = res[lieu].nomLieu;
    this.lieu.sanitaire = res[lieu].sanitaire;
-    if(this.lieu.sanitaire==1){
-      this.wc="Oui"
-      }
-      else{
-        this.wc="Non";
-      }
    this.lieu.tranquillite = res[lieu].tranquillite;
    this.lieu.votePos = res[lieu].votePos;
    this.lieu.voteNeg = res[lieu].voteNeg;
@@ -64,4 +58,44 @@ export class DetailsLieuxPage implements OnInit {
  console.log(error);
  });
  }
+
+
+//Getter de données a afficher
+ getSanitaire() : string{
+  if(this.lieu.sanitaire==1){
+    return "Oui"
+    }
+    else{
+      return "Non";
+    }
+ }
+
+ getNomLieu() : string{
+  if(this.lieu.nomLieu==""){
+    return "Details du lieu"
+    }
+    else{
+      return this.lieu.nomLieu;
+    }
+ }
+
+ getInstallation() : string{
+  if(this.lieu.installation==1){
+    return "Oui"
+    }
+    else{
+      return "Non"
+    }
+ }
+
+ getCreateur(){
+   //to be done
+ }
+
+ 
+
+
+
+
+}
   
