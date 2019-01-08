@@ -1,14 +1,18 @@
 {
   "ExpandedNodes": [
     "",
+    "\\resources",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\details-lieux",
+    "\\src\\app\\globalscripts",
     "\\src\\app\\home",
-    "\\src\\app\\inscription",
-    "\\src\\app\\map",
-    "\\src\\app\\profil",
-    "\\src\\assets"
+    "\\src\\app\\tabs",
+    "\\src\\assets",
+    "\\src\\assets\\icon",
+    "\\src\\environments",
+    "\\src\\theme"
   ],
-  "SelectedNode": "\\src\\app\\app.component.spec.ts",
+  "SelectedNode": "\\src\\app\\bienvenue\\bienvenue.page.html",
   "PreviewInSolutionExplorer": false
 }

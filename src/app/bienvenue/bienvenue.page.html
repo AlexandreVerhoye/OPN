@@ -5,25 +5,48 @@
                 <ion-icon slot="icon-only" name="close-circle"></ion-icon>
             </ion-button>
         </ion-buttons>
-      <ion-title>Page de bienvenue</ion-title>
+        <ion-title>Page de bienvenue</ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
 
 <ion-content padding>
 
-  <ion-slides pager="true">
-    <ion-slide>
-      <h1><a href='/app/tabs/(home:home)'>Slide 1</a></h1>
-    </ion-slide>
-  
-    <ion-slide>
-      <h1>Slide 2</h1>
-    </ion-slide>
-  
-    <ion-slide>
+    <ion-slides pager="true">
+        <ion-slide>
+            <h1>Bienvenue sur OpenPicNic ! </h1><br />
+            <p>
+                <br />
+                OpenPicNic est une application qui va vous permettre de trouver le meilleur lieu pour pique-niquer. <br />
+                En effet OpenPicNic est une application tr&egrave;s simple d'utilisation qui r&eacute;unis une communaut&eacute; autour  <br />
+                d'une m&ecirc;me passion qui est celle du pique-nique.En famille ou avec des amis, vous connaitrez tout   <br />
+                les lieux les plus propices afin de partager de bon moment autour d'un sandwich ou m&ecirc;me d'un       <br />
+                bon barbecue si le lieu en question en propose un...Toujours partant ? Alors c'est parti !!!        <br />
+
+            </p>
+            <br />
+            <h1>Swipe sur la droite pour nous rejoindre </h1><br />
+            <a href='/app/tabs/(home:home)'><h1>Quitter</h1></a>
+        </ion-slide>
+
+        <ion-slide>
+            <h1>Nous rejoindre</h1>
+            <p>
+                Afin d'utiliser notre application rien de plus simple, il vous suffit de cr&eacute;er un compte OpenPicNic <br />
+                et vous aurez acc&eacute;s &agrave; l'application, c'est &agrave; dire une communaut&eacute; active qui partage et note <br />
+                les endroits de pique-nique partager par cette m&ecirc;me communaut&eacute;. <br />
+                Vous l'aurez compris la force d'OpenPicNic, c'est sa communaut&eacute;.
+            </p>
+            <a href='/app/tabs/(profil:profil)'><h1>Cr&eacute;er un compte</h1></a><br />
+            <a href='/app/tabs/(profil:profil)'><h1>Vous poss&eacute;dez d&eacute;j&agrave; un compte ? Connectez vous</h1></a><br />
+            <a href='/app/tabs/(home:home)'><h1>Quitter</h1></a>
+        </ion-slide>
+
+
+        <!--<ion-slide> INUTILE ?
       <h1>Slide 3</h1>
-    </ion-slide>
-  </ion-slides>
+
+    </ion-slide>-->
+    </ion-slides>
 
 </ion-content>
 
