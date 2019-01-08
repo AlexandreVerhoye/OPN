@@ -21,8 +21,9 @@ export class DetailsLieuxPage implements OnInit {
   commentaires : any;
   isLiked : boolean=false;
   isDisliked : boolean = false;
+  nouveauCom : string;
 
-    constructor(private gs : globalscripts, navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, private ms : mapscripts) { 
+    constructor(private gs : globalscripts, navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, public ms : mapscripts) { 
       this.id = navParams.get('id');
       this.http = http;
       this.loadLieu();

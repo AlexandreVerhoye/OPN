@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import org.apache.cordova.ConfigXmlParser;
 import org.apache.cordova.CordovaInterface;
@@ -58,15 +59,20 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
     ConfigXmlParser parser = new ConfigXmlParser();
     parser.parse(cordova.getActivity());
 
-    String port = preferences.getString("WKPort", "8080");
-    CDV_LOCAL_SERVER = "http://localhost:" + port;
+    String hostname = preferences.getString("Hostname", "localhost");
+    CDV_LOCAL_SERVER = "http://" + hostname;
 
-    localServer = new WebViewLocalServer(cordova.getActivity(), "localhost:" + port, true, parser);
-    WebViewLocalServer.AssetHostingDetails ahd = localServer.hostAssets("www");
+    localServer = new WebViewLocalServer(cordova.getActivity(), hostname, true, parser);
+    localServer.hostAssets("www");
 
     webView.setWebViewClient(new ServerClient(this, parser));
 
     super.init(parentWebView, cordova, client, resourceApi, pluginManager, nativeToJsMessageQueue);
+    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      final WebSettings settings = webView.getSettings();
+      int mode = preferences.getInteger("MixedContentMode", 0);
+      settings.setMixedContentMode(mode);
+    }
     SharedPreferences prefs = cordova.getActivity().getApplicationContext().getSharedPreferences(IonicWebView.WEBVIEW_PREFS_NAME, Activity.MODE_PRIVATE);
     String path = prefs.getString(IonicWebView.CDV_SERVER_PATH, null);
     if (!isDeployDisabled() && !isNewBinary() && path != null && !path.isEmpty()) {
@@ -137,7 +143,9 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
     public void onPageFinished(WebView view, String url) {
       super.onPageFinished(view, url);
       view.loadUrl("javascript:(function() { " +
-              "window.WEBVIEW_SERVER_URL = '" + CDV_LOCAL_SERVER + "'" +
+              "window.WEBVIEW_SERVER_URL = '" + CDV_LOCAL_SERVER + "';" +
+              "window.WEBVIEW_FILE_PREFIX = '" + WebViewLocalServer.ionicFileScheme + "';" +
+              "window.WEBVIEW_CONTENT_PREFIX = '" + WebViewLocalServer.ionicContentScheme + "';" +
               "})()");
     }
   }

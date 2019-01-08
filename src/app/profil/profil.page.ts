@@ -19,7 +19,7 @@ export class ProfilPage {
 
 
 
-  constructor(public modalCtrl: ModalController,private gs : globalscripts, private ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {}
+  constructor(public modalCtrl: ModalController,private gs : globalscripts, public ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {}
 
   
   /*Bouton deconnexion qui permet de confirmer ou non la deconnexion */
