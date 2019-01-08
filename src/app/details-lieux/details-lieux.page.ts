@@ -69,7 +69,6 @@ public loadCommentaires(){
   var myData = JSON.stringify({idLieu: this.id});
     this.http.post(link, myData)
     .subscribe(data => {
-      console.log(data);
       var res = JSON.parse(data["_body"]);
     this.commentaires = res;
     console.log(this.commentaires);
