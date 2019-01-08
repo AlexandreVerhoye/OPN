@@ -18,6 +18,7 @@ import { globalscripts } from '../globalscripts/globalscripts';
 export class DetailsLieuxPage implements OnInit {
   id : number;
   lieu : any = {};
+  commentaires : any;
   isLiked : boolean=false;
   isDisliked : boolean = false;
 
@@ -26,6 +27,7 @@ export class DetailsLieuxPage implements OnInit {
       this.http = http;
       this.loadLieu();
       console.log(this.lieu);
+      this.loadCommentaires();
     }
 
   ngOnInit() {
@@ -39,28 +41,42 @@ export class DetailsLieuxPage implements OnInit {
     var link = 'http://localhost/testOPN/retrieve-lieu.php';
     var myData = JSON.stringify({idLieu: this.id});
  
- this.http.post(link, myData)
- .subscribe(data => {
- var res = JSON.parse(data["_body"]);
- console.log(res);
- for (var lieu in res){
-   this.lieu.idLieu = res[lieu].idLieu;
-   this.lieu.adresse = res[lieu].adresse;
-   this.lieu.dateCreation = res[lieu].dateCreation;
-   this.lieu.idCreateur = res[lieu].idCreateur;
-   this.lieu.installation = res[lieu].installation;
-   this.lieu.latitude = res[lieu].latitude;
-   this.lieu.longitude = res[lieu].longitude;
-   this.lieu.nomLieu = res[lieu].nomLieu;
-   this.lieu.sanitaire = res[lieu].sanitaire;
-   this.lieu.tranquillite = res[lieu].tranquillite;
-   this.lieu.votePos = res[lieu].votePos;
-   this.lieu.voteNeg = res[lieu].voteNeg;
- }
- }, error => {
- console.log(error);
- });
- }
+    this.http.post(link, myData)
+    .subscribe(data => {
+    var res = JSON.parse(data["_body"]);
+    console.log(res);
+    for (var lieu in res){
+      this.lieu.idLieu = res[lieu].idLieu;
+      this.lieu.adresse = res[lieu].adresse;
+      this.lieu.dateCreation = res[lieu].dateCreation;
+      this.lieu.idCreateur = res[lieu].idCreateur;
+      this.lieu.installation = res[lieu].installation;
+      this.lieu.latitude = res[lieu].latitude;
+      this.lieu.longitude = res[lieu].longitude;
+      this.lieu.nomLieu = res[lieu].nomLieu;
+      this.lieu.sanitaire = res[lieu].sanitaire;
+      this.lieu.tranquillite = res[lieu].tranquillite;
+      this.lieu.votePos = res[lieu].votePos;
+      this.lieu.voteNeg = res[lieu].voteNeg;
+    }
+  }, error => {
+    console.log(error);
+  });
+}
+
+public loadCommentaires(){
+  var link = 'http://localhost/testOPN/scripts-detailsLieu/retrieve-commentaires.php';
+  var myData = JSON.stringify({idLieu: this.id});
+    this.http.post(link, myData)
+    .subscribe(data => {
+      console.log(data);
+      var res = JSON.parse(data["_body"]);
+    this.commentaires = res;
+    console.log(this.commentaires);
+  }, error => {
+    console.log(error);
+  });
+}
 
 
 //Getter de données a afficher
