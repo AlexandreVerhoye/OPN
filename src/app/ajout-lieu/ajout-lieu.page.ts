@@ -11,6 +11,12 @@ export class AjoutLieuPage implements OnInit {
 
   constructor(private modalCtrl : ModalController, private ms : mapscripts) { }
 
+  nomLieu : string;
+  descLieu : string;
+  tranquillite : string = "Non renseignée";
+  sanitaireIsChecked : boolean = false;
+  installationIsChecked : boolean = false;
+
   ngOnInit() {
   }
 
@@ -28,7 +34,15 @@ export class AjoutLieuPage implements OnInit {
   }
 
   creerLieu(){
+    console.log(this.tranquillite);
+    console.log(this.installationIsChecked);
+    console.log(this.sanitaireIsChecked);
     //Ajouter script de creation de lieu avec mapscripts
   }
+
+  customActionSheetOptions: any = {
+    header: 'Tranquillité',
+    subHeader: 'Selectionnez le niveau de tranquillité du lieu'
+  };
 
 }

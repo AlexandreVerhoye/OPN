@@ -13,8 +13,8 @@
 
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>Le lieu de picnic sera créé sur votre position actuelle</ion-card-subtitle>
     <ion-card-title>Votre position :</ion-card-title>
+    <ion-card-subtitle>Le lieu de picnic sera créé sur votre position actuelle</ion-card-subtitle>
   </ion-card-header>
 <ion-card-content>
   <p>X <ion-icon name="arrow-dropright"></ion-icon> {{getX()}}</p>
@@ -22,10 +22,50 @@
 </ion-card-content>
 </ion-card>
 
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Informations du lieu</ion-card-title>
+    <ion-card-subtitle>Rentrez les informations du lieu</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
   <ion-item>
-    <ion-label position="floating">Description du lieu :</ion-label>
-    <ion-textarea [(ngModel)]="descLieu" type="text"></ion-textarea>
-</ion-item>
+    <ion-label position="floating">Nom du lieu : </ion-label>
+    <ion-textarea [(ngModel)]="nomLieu" type="text"></ion-textarea>
+  </ion-item>
+  <ion-item>
+      <ion-label position="floating">Description du lieu :</ion-label>
+      <ion-textarea [(ngModel)]="descLieu" type="text"></ion-textarea>
+  </ion-item>
+</ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Environnement du lieu</ion-card-title>
+    <ion-card-subtitle>Diverses informations a propos du cadre du lieu</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Sanitaire</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="sanitaireIsChecked"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Installation</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="installationIsChecked"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+        <ion-label>Tranquillité</ion-label>
+        <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Niveau" [(ngModel)]="tranquillite">
+          <ion-select-option value="Très bruyant">Très bruyant</ion-select-option>
+          <ion-select-option value="Bruyant">Bruyant</ion-select-option>
+          <ion-select-option value="Moyen">Moyen</ion-select-option>
+          <ion-select-option value="Calme">Calme</ion-select-option>
+          <ion-select-option value="Très calme">Très calme</ion-select-option>
+        </ion-select>
+      </ion-item>
+  </ion-card-content>
+</ion-card>
 
   <ion-button size="large" expand="block" strong="true" shape="round" color="success" fill="solid" (click)="creerLieu()">Ajouter a la carte</ion-button>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, wtfCreateScope } from '@angular/core';
+import { Component, OnInit, wtfCreateScope, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
@@ -8,6 +8,7 @@ import { loadElementInternal, stringify } from '@angular/core/src/render3/util';
 import { Http } from '@angular/http';
 import { mapscripts } from '../globalscripts/mapscripts';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { globalscripts } from '../globalscripts/globalscripts';
 
 @Component({
   selector: 'app-details-lieux',
@@ -17,8 +18,10 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 export class DetailsLieuxPage implements OnInit {
   id : number;
   lieu : any = {};
-  
-    constructor(navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, private ms : mapscripts) { 
+  isLiked : boolean=false;
+  isDisliked : boolean = false;
+
+    constructor(private gs : globalscripts, navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, private ms : mapscripts) { 
       this.id = navParams.get('id');
       this.http = http;
       this.loadLieu();
@@ -90,6 +93,50 @@ export class DetailsLieuxPage implements OnInit {
 
  getCreateur(){
    //to be done
+ }
+
+ setLike(){
+
+  if(this.isDisliked==false && this.isLiked==false){
+    //+1 like
+    this.isLiked=true;
+    this.lieu.votePos+=1;
+  }
+
+  else if(this.isDisliked==true && this.isLiked==false){
+    //-1 dislike +1 like
+    this.lieu.voteNeg-=1;
+    this.lieu.votePos+=1;
+    this.isLiked=true;
+    this.isDisliked=false;
+  }
+
+  else if(this.isDisliked==false && this.isLiked==true){
+    //Do nothing
+    this.gs.toastErreur("Vous avez deja liké", 1000);
+  }
+
+}
+
+ setDislike(){
+  if(this.isDisliked==false && this.isLiked==false){
+    //+1 like
+    this.isDisliked=true;
+    this.lieu.voteNeg+=1;
+  }
+
+  else if(this.isLiked==true && this.isDisliked==false){
+    //-1 like +1 dislike
+    this.lieu.votePos-=1;
+    this.lieu.voteNeg+=1;
+    this.isDisliked=true;
+    this.isLiked=false;
+  }
+
+  else if(this.isLiked==false && this.isDisliked==true){
+    //Do nothing
+    this.gs.toastErreur("Vous avez deja disliké", 1000);
+  }
  }
 
  

@@ -1,8 +1,13 @@
 <ion-header>
         <ion-toolbar>
-            <ion-title>{{getNomLieu()}}</ion-title>
+            <ion-buttons slot="start">
+                <ion-button (click)="dismiss()">
+                    <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+          <ion-title>{{getNomLieu()}}</ion-title>
         </ion-toolbar>
-</ion-header>
+      </ion-header>
 
 <ion-content padding>
 
@@ -28,18 +33,47 @@
                 {{lieu.tranquillite}}
                 <ion-icon name="megaphone" size="small" slot="start"></ion-icon>
             </ion-item>
+            
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-button shape="round" expand="block" color="primary" fill="outline" ><ion-icon name="thumbs-up" size="medium"></ion-icon>{{lieu.votePos}}</ion-button>
+                    <ion-chip>
+                        <ion-avatar>
+                            <img src="assets/noavatar.jpg">
+                        </ion-avatar>
+                        <ion-label>Ajouté par : moi (pour test)</ion-label>
+                    </ion-chip>
                     </ion-col>
                     <ion-col>
-                        <ion-button shape="round" expand="block" color="danger" fill="outline" ><ion-icon name="thumbs-down" size="medium"></ion-icon>{{lieu.voteNeg}}</ion-button>
+                        <ion-chip>
+                            <ion-icon name="calendar"></ion-icon>
+                            <ion-label>Le {{lieu.dateCreation}}</ion-label>
+                        </ion-chip>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="setLike()" ><ion-icon name="thumbs-up" size="medium"></ion-icon>{{lieu.votePos}}</ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button shape="round" expand="block" color="danger" fill="outline" (click)="setDislike()"><ion-icon name="thumbs-down" size="medium"></ion-icon>{{lieu.voteNeg}}</ion-button>
 
                     </ion-col>
                 </ion-row>
             </ion-grid>
+
+            <ion-list-header>
+                <h2>Commentaires</h2>
+            </ion-list-header>
+            <ion-list>
+                <ion-item *ngFor="let com of commentaires">
+                  test
+                </ion-item>
+            </ion-list>
             
+            
+            
+       
             <ion-button size="large" expand="block" strong="true" shape="round" color="primary" fill="solid" (click)="ms.navigateTo(lieu.latitude, lieu.longitude)">Naviguer vers le lieu</ion-button>
             
 
