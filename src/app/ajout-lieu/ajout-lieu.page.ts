@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { mapscripts } from '../globalscripts/mapscripts';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-ajout-lieu',
@@ -9,7 +10,7 @@ import { mapscripts } from '../globalscripts/mapscripts';
 })
 export class AjoutLieuPage implements OnInit {
 
-  constructor(private modalCtrl : ModalController, private ms : mapscripts) { }
+  constructor(private modalCtrl : ModalController, private ms : mapscripts, private camera: Camera) { }
 
   nomLieu : string;
   descLieu : string;
@@ -52,4 +53,24 @@ export class AjoutLieuPage implements OnInit {
     subHeader: 'Selectionnez le niveau de tranquillité du lieu'
   };
 
+  const options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
+
+  takePicture(){
+
+  
+  
+  this.camera.getPicture(options).then((imageData) => {
+   // imageData is either a base64 encoded string or a file URI
+   // If it's base64 (DATA_URL):
+   let base64Image = 'data:image/jpeg;base64,' + imageData;
+  }, (err) => {
+   // Handle error
+  });
+  }
 }
