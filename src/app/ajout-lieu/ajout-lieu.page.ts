@@ -16,6 +16,8 @@ export class AjoutLieuPage implements OnInit {
   tranquillite : string = "Non renseignée";
   sanitaireIsChecked : boolean = false;
   installationIsChecked : boolean = false;
+  rueLieu : string;
+  villeLieu : string;
 
   ngOnInit() {
   }
@@ -33,10 +35,15 @@ export class AjoutLieuPage implements OnInit {
     return this.ms.getMaPosY();
   }
 
+  adresseToString() : string {
+    return this.rueLieu + ", "+ this.villeLieu;
+  }
+
   creerLieu(){
     console.log(this.tranquillite);
     console.log(this.installationIsChecked);
     console.log(this.sanitaireIsChecked);
+    console.log(this.adresseToString());
     //Ajouter script de creation de lieu avec mapscripts
   }
 
