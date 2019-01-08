@@ -154,6 +154,10 @@ public loadCommentaires(){
   }
  }
 
+ addCommentaire(){
+   //To do
+ }
+
  
 
 

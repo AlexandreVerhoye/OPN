@@ -114,6 +114,7 @@ export class MapPage {
         component: AjoutLieuPage
       });
       return await modalAjout.present();
+      this.refreshLocation();
 
   }
 
