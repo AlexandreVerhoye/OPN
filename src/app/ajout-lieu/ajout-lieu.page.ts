@@ -37,7 +37,13 @@ export class AjoutLieuPage implements OnInit {
   }
 
   adresseToString() : string {
-    return this.rueLieu + ", "+ this.villeLieu;
+    if(this.rueLieu!=null && this.villeLieu!=null){
+      return this.rueLieu + ", "+ this.villeLieu;
+    }
+    else{
+      return "Non definie"
+    }
+    
   }
 
   creerLieu(){

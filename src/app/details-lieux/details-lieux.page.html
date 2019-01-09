@@ -44,7 +44,7 @@
                         <ion-avatar>
                             <img src="assets/noavatar.jpg">
                         </ion-avatar>
-                        <ion-label>Ajouté par : moi (pour test)</ion-label>
+                        <ion-label>Ajouté par {{lieu.idCreateur}}</ion-label>
                     </ion-chip>
                     </ion-col>
                     <ion-col>
@@ -70,14 +70,33 @@
             <ion-list-header>
                 <h2>Commentaires</h2>
             </ion-list-header>
-            <ion-item text-wrap no-lines>
-                <ion-label position="floating">Ajouter un commentaire</ion-label>
-                <ion-textarea [(ngModel)]="nouveauCom" type="text"></ion-textarea>
-            </ion-item>
-            <ion-button shape="round" expand="block" color="primary" fill="outline" (click)="addCommentaire()"><ion-icon name="send"></ion-icon>Envoyer le commentaire</ion-button>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="9">
+                        <ion-item text-wrap>
+                            <ion-label position="floating">Ajouter un commentaire</ion-label>
+                            <ion-textarea [(ngModel)]="nouveauCom" type="text"></ion-textarea>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button shape="round" size="large" color="primary" fill="outline" (click)="addCommentaire()"><ion-icon name="send"></ion-icon></ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-item-divider>
+                
+            </ion-item-divider>
             <ion-list>
-                <ion-item *ngFor="let com of commentaires">
-                  {{com.texte}}
+                <ion-item *ngFor="let com of commentaires" text-wrap>
+                        <ion-avatar slot="start">
+                            <img src="assets/noavatar.jpg">
+                        </ion-avatar>
+                            <ion-label text-wrap>
+                                <h2>{{com.prenom}} {{com.nom}} </h2>
+                                <p>{{com.texte}}</p>
+                            </ion-label>
+
+                        
                 </ion-item>
             </ion-list>
        

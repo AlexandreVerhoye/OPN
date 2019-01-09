@@ -118,16 +118,18 @@ export class ConnexionPage {
 
 
   /*Function testInscription qui permet de tester le retour de l'id et du password (en clair) */
-  testInscription(){
+  inscription(){
     if(this.inscriptionMail!=null || this.inscriptionPass!=null || this.inscriptionPrenom!=null || this.inscriptionNom!=null || this.inscriptionPass2!=null){
     console.log("Script testConnexion : click");
     console.log("Script testConnexion : en cours");
-    console.log(this.inscriptionPrenom);
+    console.log(this.inscriptionPrenom); 
     console.log(this.inscriptionNom);
     console.log(this.inscriptionMail);
       if(this.inscriptionPass==this.inscriptionPass2){
         console.log("Les deux mots de passes correspondent :")
-        console.log(this.inscriptionPass);
+        console.log(this.inscriptionPass); //Ne pas afficher 
+        //script inscription
+        this.gs.toastBasic("Vous etes maintenant inscrit sur OPN, veuillez vous connecter.", 5000);
       }
     else{
       console.log("Les deux mots de passes ne correspondent pas :")
