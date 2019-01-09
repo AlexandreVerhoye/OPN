@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+
 
 @Component({
 
@@ -7,9 +8,14 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./bienvenue.page.scss'],
 })
 export class BienvenuePage{
-  constructor(private modalCtrl : ModalController) { }
+  constructor(private modalCtrl : ModalController, private navCtrl : NavController) { }
 
-  dismiss(){
-    this.modalCtrl.dismiss(null, undefined, null);
+  public async dismiss() {
+    const modal = await this.modalCtrl.getTop();
+    modal.dismiss();
+  }
+
+  goToConnexion(){
+    this.navCtrl.navigateRoot('/');
   }
 };
