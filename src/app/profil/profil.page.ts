@@ -84,6 +84,7 @@ export class ProfilPage {
         icon: 'send',
         handler: () => {
           console.log('Option "Contacter OPN" : click');
+          this.ps.testCo();
         }
       }, {
         text: 'Fermer',

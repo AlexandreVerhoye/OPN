@@ -1,23 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { profilscripts } from '../globalscripts/profilscripts'
-import { AlertController } from '@ionic/angular';
-import { ActionSheetController } from '@ionic/angular';
-import { NavParams } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController, ActionSheetController } from '@ionic/angular';
 import { globalscripts } from '../globalscripts/globalscripts';
-import { Storage } from '@ionic/storage';
-
+import { profilscripts } from '../globalscripts/profilscripts';
 
 @Component({
-  selector: 'app-connexion',
-  templateUrl: 'connexion.page.html',
-  styleUrls: ['connexion.page.scss']
+  selector: 'app-connexion-utilisateur',
+  templateUrl: './connexion-utilisateur.page.html',
+  styleUrls: ['./connexion-utilisateur.page.scss'],
 })
-
-export class ConnexionPage implements OnInit {
-
-
-  constructor(private storage: Storage, navParams: NavParams, public gs : globalscripts, public modalCtrl : ModalController, private ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {
+export class ConnexionUtilisateurPage implements OnInit {
+  constructor(public gs : globalscripts, public modalCtrl : ModalController, private ps : profilscripts, private alertController : AlertController, private actionSheetController : ActionSheetController ) {
     console.log("succès");
   }
 

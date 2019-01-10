@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
 import { stringify } from '@angular/core/src/render3/util';
 import { getLocaleDayNames } from '@angular/common';
+import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 
 @Injectable()
 export class profilscripts {
@@ -14,7 +16,7 @@ export class profilscripts {
   public prenom = "Alexandre"; //Var declaré ici pour test sans BDD
   private connecté : boolean = false; //Var declaré ici pour test sans BDD
 
-constructor(private gs : globalscripts, private http : HttpClient) {
+constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : HttpClient) {
   //this.loadProfil();  //Retirer pour tests sans BDD
 }
 
@@ -70,9 +72,29 @@ constructor(private gs : globalscripts, private http : HttpClient) {
   /*Function deconnexion() correspond au script lorsque l'utilisateur souhaite se deconnecter */
   public deconnexion(){
     console.log('Script deconnexion : en cours');
-    //code pour deconnexion
+    this.storage.set('co', 'false');
+    this.storage.get('co').then((val) => {
+      console.log('Connecté ?', val);
+    });
     this.gs.toastBasic('Deconnecté', 1000);
     console.log('Script deconnexion : succès');
+  }
+
+  public connexion(){
+    console.log('Script connexion : en cours');
+    this.storage.set('co', 'true');
+    this.storage.get('co').then((val) => {
+      console.log('Connecté ?', val);
+    });
+    this.navCtrl.navigateRoot('/app/tabs/(home:home)');
+    this.gs.toastBasic('Deconnecté', 1000);
+    console.log('Script deconnexion : succès');
+  }
+
+  public testCo(){
+    this.storage.get('co').then((val) => {
+      console.log('Connecté ?', val);
+    });
   }
 
 

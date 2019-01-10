@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'bienvenue', loadChildren: './bienvenue/bienvenue.module#BienvenuePageModule' },
   { path: 'ajoutLieu', loadChildren: './ajout-lieu/ajout-lieu.module#AjoutLieuPageModule' },
   { path: 'reglage-confid', loadChildren: './reglage-confid/reglage-confid.module#ReglageConfidPageModule' },
-  { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' }
+  { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' },  { path: 'connexionUtilisateur', loadChildren: './connexion-utilisateur/connexion-utilisateur.module#ConnexionUtilisateurPageModule' }
+
 
 
 ];
