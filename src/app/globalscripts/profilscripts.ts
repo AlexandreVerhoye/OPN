@@ -7,6 +7,7 @@ import { stringify } from '@angular/core/src/render3/util';
 import { getLocaleDayNames } from '@angular/common';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable()
 export class profilscripts {
@@ -72,7 +73,7 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
   /*Function deconnexion() correspond au script lorsque l'utilisateur souhaite se deconnecter */
   public deconnexion(){
     console.log('Script deconnexion : en cours');
-    this.storage.set('co', 'false');
+    this.storage.set('co', false);
     this.storage.get('co').then((val) => {
       console.log('Connecté ?', val);
     });
@@ -82,7 +83,7 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
   public connexion(){
     console.log('Script connexion : en cours');
-    this.storage.set('co', 'true');
+    this.storage.set('co', true);
     this.storage.get('co').then((val) => {
       console.log('Connecté ?', val);
     });
@@ -91,9 +92,11 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
     console.log('Script deconnexion : succès');
   }
 
-  public testCo(){
+  public testCo() : any{
     this.storage.get('co').then((val) => {
-      console.log('Connecté ?', val);
+      if (val == true){
+        return true;
+      }
     });
   }
 
