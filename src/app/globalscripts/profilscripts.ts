@@ -16,6 +16,7 @@ export class profilscripts {
   public items: any;
   public nom : string; //Var declaré ici pour test sans BDD
   public prenom : string; //Var declaré ici pour test sans BDD
+  private co : boolean = false;
 
 
 
@@ -61,15 +62,13 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
     var mot : string;
 
-    this.storage.get('co').then((val) => {
-      if(val==true){
+    if(this.co==true){
         mot=("Bon "+ this.getDay() +", "+(this.getPrenom())+" !"); //Utilisateur connecté
       }
       else{
         mot=(("Bon ")+this.getDay()+(" !")); //Utilisateur non-connecté donc pas d'affichage du prenom
       }
-    });
-
+   
     return(mot);
   }
 
@@ -83,7 +82,7 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
     this.storage.set('pass', null);
 
     this.testCo()
-
+    this.navCtrl.navigateRoot('bienvenue');
     this.gs.toastBasic('Deconnecté', 1000);
     console.log('Script deconnexion : succès');
   }
@@ -97,10 +96,10 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
 
     this.storage.set('co', true);
-    this.storage.set('email', email);
-    this.storage.set('pass', pass);
+    this.storage.set('email', emailInscription);
+    this.storage.set('pass', passInscription);
 
-    this.testCo();//Dev
+    this.testCo(); //Dev
 
     this.gs.toastBasic('Connecté !', 1000);
     this.navCtrl.navigateRoot('/app/tabs/(home:home)');
@@ -115,7 +114,6 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
     this.storage.get('email').then((val) => {
       console.log('Email', val);
-      
     });
 
     this.storage.get('pass').then((val) => {
