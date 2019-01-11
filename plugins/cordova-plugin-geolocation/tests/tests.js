@@ -364,7 +364,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
 
     var location_div = '<div id="info">' +
             '<b>Status:</b> <span id="location_status">Stopped</span>' +
-            '<table width="100%">';
+            '<tab width="100%">';
     var latitude = '<tr>' +
             '<td><b>Latitude:</b></td>' +
             '<td id="latitude">&nbsp;</td>' +
@@ -409,7 +409,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
             '<td id="timestamp">&nbsp;</td>' +
             '<td>(DOMTimeStamp) when the position was acquired [<a href="http://dev.w3.org/geo/api/spec-source.html#timestamp">#ref]</a></td>' +
             '</tr>' +
-            '</table>' +
+            '</tab>' +
             '</div>';
     var actions =
             '<div id="cordova-getLocation"></div>' +

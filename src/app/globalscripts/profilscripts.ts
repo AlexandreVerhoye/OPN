@@ -8,14 +8,17 @@ import { getLocaleDayNames } from '@angular/common';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { TestComponentRenderer } from '@angular/core/testing';
 
 @Injectable()
 export class profilscripts {
 
   public items: any;
-  public nom = "Verhoye"; //Var declaré ici pour test sans BDD
-  public prenom = "Alexandre"; //Var declaré ici pour test sans BDD
-  private connecté : boolean = false; //Var declaré ici pour test sans BDD
+  public nom : string; //Var declaré ici pour test sans BDD
+  public prenom : string; //Var declaré ici pour test sans BDD
+  private pass : string; 
+  private connecté : boolean = false;
+  private email : string;
 
 constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : HttpClient) {
   //this.loadProfil();  //Retirer pour tests sans BDD
@@ -73,30 +76,47 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
   /*Function deconnexion() correspond au script lorsque l'utilisateur souhaite se deconnecter */
   public deconnexion(){
     console.log('Script deconnexion : en cours');
+
     this.storage.set('co', false);
-    this.storage.get('co').then((val) => {
-      console.log('Connecté ?', val);
-    });
+    this.storage.set('email', null);
+    this.storage.set('pass', null);
+
+    this.testCo()
+
     this.gs.toastBasic('Deconnecté', 1000);
     console.log('Script deconnexion : succès');
   }
 
-  public connexion(){
+  public connexion(email : string, pass : string){
     console.log('Script connexion : en cours');
+
+    this.email=email;
+    this.pass=pass;
+
     this.storage.set('co', true);
-    this.storage.get('co').then((val) => {
-      console.log('Connecté ?', val);
-    });
+    this.storage.set('email', this.email);
+    this.storage.set('pass', this.pass);
+
+    this.testCo();
+
     this.navCtrl.navigateRoot('/app/tabs/(home:home)');
     this.gs.toastBasic('Deconnecté', 1000);
     console.log('Script deconnexion : succès');
   }
 
-  public testCo() : any{
+  public testCo(){
+
     this.storage.get('co').then((val) => {
-      if (val == true){
-        return true;
-      }
+      console.log('Connecté ?', val);
+    });
+
+    this.storage.get('email').then((val) => {
+      console.log('Email', val);
+      
+    });
+
+    this.storage.get('pass').then((val) => {
+      console.log('Pass', val);
     });
   }
 
@@ -120,7 +140,6 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
   }
 }
 
-  
 
   
 

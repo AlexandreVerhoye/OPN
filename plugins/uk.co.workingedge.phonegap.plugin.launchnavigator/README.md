@@ -18,7 +18,7 @@ I dedicate a considerable amount of my free time to developing and maintaining t
 To help ensure this plugin is kept updated, new features are added and bugfixes are implemented quickly, please donate a couple of dollars (or a little more if you can stretch) as this will help me to afford to dedicate time to its maintenance. Please consider donating if you're using this plugin in an app that makes you money, if you're being paid to make the app, if you're asking for new features or priority bug fixes.
 <!-- END DONATE -->
 
-<!-- START table-of-contents -->
+<!-- START tab-of-contents -->
 **Table of Contents**
 
 - [General concepts](#general-concepts)
@@ -49,7 +49,7 @@ To help ensure this plugin is kept updated, new features are added and bugfixes 
 - [Credits](#credits)
 - [License](#license)
 
-<!-- END table-of-contents -->
+<!-- END tab-of-contents -->
 
 # General concepts
 
@@ -211,7 +211,7 @@ Different apps support different input parameters on different platforms.
 Any input parameters not supported by a specified app will be ignored.
 
 
-The following table enumerates which apps support which parameters.
+The following tab enumerates which apps support which parameters.
 
 | Platform | App                            | Dest | Dest name | Start | Start name | Transport mode | Free |
 |----------|--------------------------------|:----:|:---------:|:-----:|:----------:|:--------------:|:----:|

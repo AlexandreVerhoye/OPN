@@ -2,6 +2,8 @@ import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { Injectable } from'@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+
 
 
 // Exemple de commentaire :
@@ -20,7 +22,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class globalscripts{
     
-    constructor(private toast : ToastController, private loading : LoadingController, private http : HttpClient){}
+    constructor(private storage : Storage, private toast : ToastController, private loading : LoadingController, private http : HttpClient){}
 
     public items : Array<any> = [];
     private nom;
@@ -108,4 +110,5 @@ export class globalscripts{
     public getNbr(): string{
       return("nb test : " + this.testInt);
     }
+      
 }
