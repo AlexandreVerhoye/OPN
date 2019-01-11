@@ -16,9 +16,8 @@ export class profilscripts {
   public items: any;
   public nom : string; //Var declaré ici pour test sans BDD
   public prenom : string; //Var declaré ici pour test sans BDD
-  private pass : string; 
-  private connecté : boolean = false;
-  private email : string;
+
+
 
 constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : HttpClient) {
   //this.loadProfil();  //Retirer pour tests sans BDD
@@ -62,12 +61,14 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
     var mot : string;
 
-    if(this.connecté==true){
-      mot=("Bon "+ this.getDay() +", "+(this.getPrenom())+" !"); //Utilisateur connecté
-    }
-    else{
-      mot=(("Bon ")+this.getDay()+(" !")); //Utilisateur non-connecté donc pas d'affichage du prenom
-    }
+    this.storage.get('co').then((val) => {
+      if(val==true){
+        mot=("Bon "+ this.getDay() +", "+(this.getPrenom())+" !"); //Utilisateur connecté
+      }
+      else{
+        mot=(("Bon ")+this.getDay()+(" !")); //Utilisateur non-connecté donc pas d'affichage du prenom
+      }
+    });
 
     return(mot);
   }
@@ -87,22 +88,24 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
     console.log('Script deconnexion : succès');
   }
 
-  public connexion(email : string, pass : string){
+
+  public connexion(emailInscription : string, passInscription : string){
     console.log('Script connexion : en cours');
 
-    this.email=email;
-    this.pass=pass;
+    var email : string = emailInscription;
+    var pass : string = passInscription;
+
 
     this.storage.set('co', true);
-    this.storage.set('email', this.email);
-    this.storage.set('pass', this.pass);
+    this.storage.set('email', email);
+    this.storage.set('pass', pass);
 
-    this.testCo();
+    this.testCo();//Dev
 
+    this.gs.toastBasic('Connecté !', 1000);
     this.navCtrl.navigateRoot('/app/tabs/(home:home)');
-    this.gs.toastBasic('Deconnecté', 1000);
-    console.log('Script deconnexion : succès');
   }
+
 
   public testCo(){
 
@@ -118,6 +121,20 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
     this.storage.get('pass').then((val) => {
       console.log('Pass', val);
     });
+  }
+
+
+  public inscription(emailInscription : string, passInscription : string, prenomInscription : string, nomInscription : string){
+    console.log('Script inscription : en cours');
+    
+    var email : string = emailInscription;
+    var pass : string = passInscription;
+    var prenom : string = prenomInscription;
+    var nom : string = nomInscription;
+
+    //Script inscription a la BD ici
+
+    this.gs.toastBasic('Vous etes maintenant inscrit, veuillez vous connecter', 3000);
   }
 
 

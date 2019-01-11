@@ -98,55 +98,36 @@ export class ConnexionUtilisateurPage implements OnInit {
     await actionSheet.present();
   }
 
-
-  /*Function testConnexion qui permet de tester le retour de l'id et du password (en clair) */
-  testConnexion(){
+  Connexion(){
     if(this.connexionMail!=null || this.connexionPass!=null){
-    this.ps.connexion(this.connexionMail, this.connexionPass);
-    
-    console.log("Script testConnexion : click");
-    console.log("Script testConnexion : en cours");
-    console.log(this.connexionMail);
-    console.log(this.connexionPass);
-    console.log("Script testConnexion : succès");
-    }
-    else{
-      console.log("Email ou mot de passe manquant.");
-    }
+
+      this.ps.connexion(this.connexionMail, this.connexionPass);
+
+      }
+      else{
+        this.gs.toastErreur("Email ou mot de passe manquant", 3000);
+      }
   }
 
 
-  /*Function testInscription qui permet de tester le retour de l'id et du password (en clair) */
+  
   inscription(){
     if(this.inscriptionMail!=null || this.inscriptionPass!=null || this.inscriptionPrenom!=null || this.inscriptionNom!=null || this.inscriptionPass2!=null){
-    console.log("Script testConnexion : click");
-    console.log("Script testConnexion : en cours");
-    console.log(this.inscriptionPrenom); 
-    console.log(this.inscriptionNom);
-    console.log(this.inscriptionMail);
+
       if(this.inscriptionPass==this.inscriptionPass2){
         console.log("Les deux mots de passes correspondent :")
-        console.log(this.inscriptionPass); //Ne pas afficher 
-        //script inscription
+        this.ps.inscription(this.inscriptionMail, this.inscriptionPass, this.inscriptionPrenom, this.inscriptionNom);
         this.gs.toastBasic("Vous etes maintenant inscrit sur OPN, veuillez vous connecter.", 5000);
       }
     else{
-      console.log("Les deux mots de passes ne correspondent pas :")
-      console.log("Mot de passe 1 : " + this.inscriptionPass);
-      console.log("Mot de passe 2 : " + this.inscriptionPass2);
+      this.gs.toastErreur("Les mots de passes ne correspondent pas.",3000);
     }
-    console.log("Script testConnexion : succès");
     }
-    else{
-      console.log("Prenom, nom, mail ou mot de passe manquant.")
-    }
-
+    this.gs.toastErreur("Il manquent des informations !", 3000)
   }
-
 
   /*Function dismiss() qui permet la fermeture du modal*/
   dismiss(){
-    this.gs.setNbr(200);
     this.modalCtrl.dismiss();
   }
 }

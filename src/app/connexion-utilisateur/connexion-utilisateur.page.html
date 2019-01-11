@@ -1,16 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-button (click)="dismiss()">
-              <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
-          </ion-button>
-      </ion-buttons>
-      <ion-title>
-          Mon compte
-      </ion-title>
-  </ion-toolbar>
-</ion-header>  
-
 <ion-content>
       
   <ion-card>
@@ -19,7 +6,7 @@
                   Connexion
               </ion-card-title>
               <ion-card-subtitle>
-                  Affiché lorsque l'utilisateur doit se connecter (qu'il as un compte)
+                  Si vous possédez deja un compte sur OpenPicNic, veuillez vous connecter.
               </ion-card-subtitle>
       </ion-card-header>
 
@@ -33,7 +20,7 @@
               <ion-input [(ngModel)]="connexionPass" type="password"></ion-input>
           </ion-item>
           <br>
-          <ion-button size="large" expand="block" strong="true" shape="round" color="primary" fill="solid" (click)="testConnexion()">Se connecter</ion-button>
+          <ion-button size="large" expand="block" strong="true" shape="round" color="primary" fill="solid" (click)="Connexion()">Se connecter</ion-button>
       </ion-card-content>
   </ion-card>
 
@@ -43,7 +30,7 @@
                       Inscription
                   </ion-card-title>
                   <ion-card-subtitle>
-                      Affiché lorsque l'utilisateur n'as pas de compte
+                      Si vous ne possédez pas de compte OpenPicNic, inscrivez-vous dans le formulaire ci-dessous. Pensez a remplir toutes les informations.
                   </ion-card-subtitle>
           </ion-card-header>
           

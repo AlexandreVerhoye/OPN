@@ -110,7 +110,7 @@ export class ConnexionPage implements OnInit {
   /*Function testConnexion qui permet de tester le retour de l'id et du password (en clair) */
   testConnexion(){
     if(this.connexionMail!=null || this.connexionPass!=null){
-    this.ps.connexion();
+    this.ps.connexion(this.connexionMail, this.connexionPass);
     
     console.log("Script testConnexion : click");
     console.log("Script testConnexion : en cours");
