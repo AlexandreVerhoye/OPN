@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { globalscripts } from '../globalscripts/globalscripts'
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
 import { stringify } from '@angular/core/src/render3/util';
@@ -9,19 +8,19 @@ import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { TestComponentRenderer } from '@angular/core/testing';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class profilscripts {
 
-  public items: any;
+  public profil: any = {};
   public nom : string; //Var declaré ici pour test sans BDD
   public prenom : string; //Var declaré ici pour test sans BDD
   private co : boolean = false;
 
 
 
-constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : HttpClient) {
-  //this.loadProfil();  //Retirer pour tests sans BDD
+constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : Http) {
 }
 
   /*Function getNom() qui retourne le nom de l'utilisateur */
@@ -91,18 +90,34 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
   public connexion(emailInscription : string, passInscription : string){
     console.log('Script connexion : en cours');
 
-    var email : string = emailInscription;
-    var pass : string = passInscription;
-
-
+    var link = 'http://localhost/testOPN/retrieve-user.php';
+    var myData = JSON.stringify({email: emailInscription, password: passInscription});
+    
+    this.http.post(link, myData)
+    .subscribe(data => {
+    var res = JSON.parse(data["_body"]);
+    for (var profil in res){
+      this.profil.nom = res[profil].nom;
+      this.profil.prenom = res[profil].prenom;
+      this.profil.password = res[profil].password;
+      this.storage.set('co', true);
+      this.storage.set('email', emailInscription);
+      this.storage.set('pass', passInscription);
+      this.gs.toastBasic('Connecté !', 1000);
+      this.navCtrl.navigateRoot('/app/tabs/(home:home)');
+    }
+  }, error => {
+    console.log(error);
+  });
+  /*if (this.profil.password == passInscription){
     this.storage.set('co', true);
     this.storage.set('email', emailInscription);
     this.storage.set('pass', passInscription);
-
-    this.testCo(); //Dev
-
     this.gs.toastBasic('Connecté !', 1000);
     this.navCtrl.navigateRoot('/app/tabs/(home:home)');
+  }*/
+
+  this.testCo(); //Dev
   }
 
 
@@ -138,21 +153,6 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
   /*Function loadProfil() qui permet de recuperer le profil de l'utilisateur*/
   /*En cours de dev*/
-  loadProfil(){
-    let data:Observable<any>;
-    data = this.http.get('http://localhost/testOPN/retrieve-data.php')
-    data.subscribe(result =>{
-      this.items = result;
-      let json = JSON.stringify(this.items); 
-      let re = /\[/gi;
-      json = json.replace(re, '');
-      re = /\]/gi;
-      json = json.replace(re, '');
-      let res = JSON.parse(json);
-      this.nom = res.nom;
-      this.prenom = res.prenom;
-    })
-  }
 }
 
 
