@@ -76,6 +76,8 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
     this.storage.set('co', false);
     this.storage.set('email', null);
     this.storage.set('pass', null);
+    this.storage.set('nom', null);
+    this.storage.set('prenom', null);
 
     this.testCo()
     this.navCtrl.navigateRoot('bienvenue');
