@@ -18,8 +18,6 @@ export class profilscripts {
   public prenom : string; //Var declaré ici pour test sans BDD
   private co : boolean = false;
 
-
-
 constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : Http) {
 }
 
@@ -52,7 +50,6 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
     var n = weekday[d.getDay()]
     return n;
-
   }
 
 
@@ -103,19 +100,14 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
       this.storage.set('co', true);
       this.storage.set('email', emailInscription);
       this.storage.set('pass', passInscription);
+      this.storage.set('nom', this.profil.nom);
+      this.storage.set('prenom', this.profil.prenom);
       this.gs.toastBasic('Connecté !', 1000);
       this.navCtrl.navigateRoot('/app/tabs/(home:home)');
     }
   }, error => {
     console.log(error);
   });
-  /*if (this.profil.password == passInscription){
-    this.storage.set('co', true);
-    this.storage.set('email', emailInscription);
-    this.storage.set('pass', passInscription);
-    this.gs.toastBasic('Connecté !', 1000);
-    this.navCtrl.navigateRoot('/app/tabs/(home:home)');
-  }*/
 
   this.testCo(); //Dev
   }
