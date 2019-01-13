@@ -141,10 +141,6 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
     this.gs.toastBasic('Vous etes maintenant inscrit, veuillez vous connecter', 3000);
   }
-
-
-  /*Function loadProfil() qui permet de recuperer le profil de l'utilisateur*/
-  /*En cours de dev*/
 }
 
 
