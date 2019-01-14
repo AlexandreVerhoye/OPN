@@ -17,6 +17,12 @@ export class profilscripts {
   private co : boolean = false;
 
 constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : Http) {
+  this.storage.get('nom').then((result) => {
+  this.profil.nom = result;
+});
+this.storage.get('prenom').then((result) => {
+  this.profil.prenom = result;
+});
 }
 
   /*Function getNom() qui retourne le nom de l'utilisateur */
