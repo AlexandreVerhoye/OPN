@@ -14,8 +14,6 @@ import { Http } from '@angular/http';
 export class profilscripts {
 
   public profil: any = {};
-  public nom : string; //Var declaré ici pour test sans BDD
-  public prenom : string; //Var declaré ici pour test sans BDD
   private co : boolean = false;
 
 constructor(private navCtrl : NavController, private storage : Storage, private gs : globalscripts, private http : Http) {
@@ -23,15 +21,14 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 
   /*Function getNom() qui retourne le nom de l'utilisateur */
   public getNom() : string{
-    //var nom = "Verhoye"; //(a titre d'exemple en attendant le script)
-    return this.nom;
+    return this.profil.nom;
   }
 
 
   /*Function getPrenom() qui retourne le prenom de l'utilisateur */
   public getPrenom() : string{
     //var prenom = "Alexandre"; //(a titre d'exemple en attendant le script)
-    return this.prenom;
+    return this.profil.prenom;
   }
 
 
