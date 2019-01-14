@@ -89,7 +89,7 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
   public connexion(emailInscription : string, passInscription : string){
     console.log('Script connexion : en cours');
 
-    var link = 'http://localhost/testOPN/retrieve-user.php';
+    var link = this.gs.connexion+'/retrieve-user.php';
     var myData = JSON.stringify({email: emailInscription, password: passInscription});
     
     this.http.post(link, myData)

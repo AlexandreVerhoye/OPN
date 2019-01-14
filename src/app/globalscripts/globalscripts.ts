@@ -24,8 +24,9 @@ export class globalscripts{
     
     constructor(private storage : Storage, private toast : ToastController, private loading : LoadingController, private http : HttpClient){}
 
+    public connexion : string  = "http://localhost/testOPN/";
+
     public items : Array<any> = [];
-    private nom;
     public testInt : number;
   
 

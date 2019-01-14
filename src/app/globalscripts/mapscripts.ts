@@ -36,7 +36,7 @@ export class mapscripts {
 
   public loadLieux(){//load les lieux de la base de données
     let data:Observable<any>;
-    data = this.http.get('http://localhost/testOPN/retrieve-lieux.php')
+    data = this.http.get(this.gs.connexion +'/retrieve-lieux.php')
     data.subscribe(result =>{
       this.items = result;
       console.log(this.items);
