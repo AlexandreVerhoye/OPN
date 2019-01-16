@@ -25,19 +25,6 @@ this.storage.get('prenom').then((result) => {
 });
 }
 
-  /*Function getNom() qui retourne le nom de l'utilisateur */
-  public getNom() : string{
-    return this.profil.nom;
-  }
-
-
-  /*Function getPrenom() qui retourne le prenom de l'utilisateur */
-  public getPrenom() : string{
-    //var prenom = "Alexandre"; //(a titre d'exemple en attendant le script)
-    return this.profil.prenom;
-  }
-
-
   /*Function getDay() qui permet de recevoir le jour et de le transformer en string*/
   public getDay() : string{
     var d = new Date();
@@ -58,17 +45,7 @@ this.storage.get('prenom').then((result) => {
 
   /*Function motDuJour() qui retourne le mot du jour si l'utilisateur est connecté ou non */
   public motDuJour() : string{
-
-    var mot : string;
-
-    if(this.co==true){
-        mot=("Bon "+ this.getDay() +", "+(this.getPrenom())+" !"); //Utilisateur connecté
-      }
-      else{
-        mot=(("Bon ")+this.getDay()+(" !")); //Utilisateur non-connecté donc pas d'affichage du prenom
-      }
-   
-    return(mot);
+    return (("Bon ")+this.getDay()+(" !"));
   }
 
   
@@ -145,6 +122,20 @@ this.storage.get('prenom').then((result) => {
     //Script inscription a la BD ici
 
     this.gs.toastBasic('Vous etes maintenant inscrit, veuillez vous connecter', 3000);
+  }
+
+  public changementNomPrenom(nom : string, prenom : string){
+
+    //Script changement nom prenom
+    //Si reussite : 
+    this.gs.toastInfo("Profil modifié avec succès", 2000);
+
+  }
+
+  public changementEmail(email : string){
+    //Script changement d'adresse mail
+    //Si succès :
+    this.gs.toastInfo("E-mail modifié avec succès", 2000);
   }
 }
 

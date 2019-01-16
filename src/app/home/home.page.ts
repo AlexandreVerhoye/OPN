@@ -17,17 +17,12 @@ export class HomePage {
   /*Function ionviewWillEnter qui correspond aux differentes actions lors de l'ouverture de la page*/
   ionViewWillEnter() : void
   {
-     //this.gs.load();
-    this.gs.toastBasic('Bienvenue sur OpenPicNic v0.2Dev', 10000);
   }
 
 
   /*Function RecommanderOPN qui permet de recommander OPN a des proche par l'appli de leur choix*/
   recommanderOPN(){
-    console.log("Script recommanderOPN : click");
-    console.log("Script recommanderOPN : en cours");
-    //Ouvrir menu de partage
-    console.log("Script recommanderOPN : succès")
+    this.gs.toastErreur("Application en developpement", 2000);
   }
 
 

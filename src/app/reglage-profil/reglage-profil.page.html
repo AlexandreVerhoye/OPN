@@ -10,5 +10,42 @@
   </ion-header>
 
 <ion-content padding>
+        <ion-card>
+        <ion-card-header>
+                <ion-card-title>
+                    Modifier le profil
+                </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+        <ion-item>
+            <ion-label position="floating">Prénom</ion-label>
+            <ion-input [(ngModel)]="prenomChamp" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input [(ngModel)]="nomChamp" type="text"></ion-input>
+        </ion-item>
+        <ion-button size="large" expand="block" shape="round" color="primary" fill="outline" (click)="changerNomPrenom()">Appliquer</ion-button>
+    </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+                Identifiant du compte
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">E-mail</ion-label>
+                <ion-input [(ngModel)]="emailChamp" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Mot de passe</ion-label>
+                <ion-input [(ngModel)]="passwordChamp" type="password" disabled></ion-input>
+            </ion-item>
+            <ion-button size="large" expand="block" shape="round" color="primary" fill="outline" (click)="changerEmail()">Appliquer</ion-button>
+        </ion-card-content>
+    </ion-card>
+
 
 </ion-content>

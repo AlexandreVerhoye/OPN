@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { NOMEM } from 'dns';
+import { profilscripts } from '../globalscripts/profilscripts';
 
 @Component({
   selector: 'app-reglage-profil',
@@ -8,7 +10,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class ReglageProfilPage implements OnInit {
 
-  constructor(private modalCtrl : ModalController) { }
+  constructor(private modalCtrl : ModalController, private ps : profilscripts) {   }
+
+  private nomChamp : string = this.ps.profil.nom;
+  private prenomChamp : string = this.ps.profil.prenom;
+  private emailChamp : string = this.ps.profil.email;
+
 
   ngOnInit() {
   }
@@ -17,5 +24,14 @@ export class ReglageProfilPage implements OnInit {
   dismiss(){
     this.modalCtrl.dismiss();
   }
+
+  changerNomPrenom(){
+    var nom = this.nomChamp;
+    var prenom = this.prenomChamp;
+
+    this.ps.changementNomPrenom(nom, prenom);
+  }
+
+
 
 }

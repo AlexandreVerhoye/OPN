@@ -72,19 +72,23 @@ export class ProfilPage {
         icon: 'heart',
         handler: () => {
           console.log('Option notation : click');
+          this.gs.toastErreur("Application en developpement", 2000);
         }
       },{
         text: 'Partager OpenPicNic',
         icon: 'share',
         handler: () => {
           console.log('Option partage : click');
+          this.gs.toastErreur("Application en developpement", 2000);
+
         }
       }, {
         text: 'Contacter OpenPicNic',
         icon: 'send',
         handler: () => {
           console.log('Option "Contacter OPN" : click');
-          this.ps.testCo();
+          this.gs.toastErreur("Application en developpement", 2000);
+
         }
       }, {
         text: 'Fermer',
