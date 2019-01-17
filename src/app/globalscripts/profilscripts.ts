@@ -75,6 +75,7 @@ this.storage.get('prenom').then((result) => {
     this.http.post(link, myData)
     .subscribe(data => {
     var res = JSON.parse(data["_body"]);
+  
     for (var profil in res){
       this.profil.nom = res[profil].nom;
       this.profil.prenom = res[profil].prenom;
@@ -87,11 +88,22 @@ this.storage.get('prenom').then((result) => {
       this.gs.toastBasic('Connecté !', 1000);
       this.navCtrl.navigateRoot('/app/tabs/(home:home)');
     }
-  }, error => {
+  },error => {
     console.log(error);
   });
 
+  
   this.testCo(); //Dev
+
+  /*
+  if(res==null){
+      this.gs.toastErreur("Erreur d'identifiant ou mot de passe", 2000);
+    }
+    else{
+    this.gs.toastBasic('Connecté !', 1000);
+    this.navCtrl.navigateRoot('/app/tabs/(home:home)');
+  }
+  */
   }
 
 
