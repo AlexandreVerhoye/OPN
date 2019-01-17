@@ -39,7 +39,7 @@ export class DetailsLieuxPage implements OnInit {
   }
 
   public loadLieu(){
-    var link = 'http://localhost/testOPN/retrieve-lieu.php';
+    var link = this.gs.connexion + '/retrieve-lieu.php';
     var myData = JSON.stringify({idLieu: this.id});
  
     this.http.post(link, myData)
