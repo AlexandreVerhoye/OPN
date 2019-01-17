@@ -22,7 +22,6 @@ coverage/
 www/
 tmp/
 temp/
-platforms/
 $RECYCLE.BIN/
 
 .DS_Store
