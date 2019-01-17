@@ -12,9 +12,10 @@ require 'PDO.php';
 		$installation = $request->installation;
 		$sanitaire = $request->sanitaire;
 		$tranquillite = $request->tranquillite;
+		$datetime = date("Y-m-d H:i:s");
 
 		try {
-      $stmt = $pdo->prepare('INSERT INTO lieupicnic ( idCreateur, nomLieu, adresse, latitude, longitude, installation, sanitaire, tranquillite) VALUES (:idCreateur, :nomLieu, :adresse, :latitude, :longitude, :installation, :sanitaire, :tranquillite)');
+      $stmt = $pdo->prepare('INSERT INTO lieupicnic ( idCreateur, nomLieu, adresse, latitude, longitude, installation, sanitaire, tranquillite, dateCreation) VALUES (:idCreateur, :nomLieu, :adresse, :latitude, :longitude, :installation, :sanitaire, :tranquillite, :dateCreation)');
 	  $stmt->bindValue(':idCreateur', $idCreateur, PDO::PARAM_INT);
 	  $stmt->bindValue(':nomLieu', $nomLieu);
 	  $stmt->bindValue(':adresse', $adresse);
@@ -23,6 +24,7 @@ require 'PDO.php';
 	  $stmt->bindValue(':installation', $installation);
 	  $stmt->bindValue(':sanitaire', $sanitaire);
 	  $stmt->bindValue(':tranquillite', $tranquillite);
+	  $stmt->bindValue(':dateCreation', $datetime);
 	  $stmt->execute();
    }
 	catch(PDOException $e)
