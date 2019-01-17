@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 import { mapscripts } from '../globalscripts/mapscripts';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { globalscripts } from '../globalscripts/globalscripts';
+import { profilscripts } from '../globalscripts/profilscripts';
 
 @Component({
   selector: 'app-details-lieux',
@@ -23,7 +24,7 @@ export class DetailsLieuxPage implements OnInit {
   isDisliked : boolean = false;
   nouveauCom : string;
 
-    constructor(private gs : globalscripts, navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, public ms : mapscripts) { 
+    constructor(private gs : globalscripts, navParams: NavParams, private modalCtrl :ModalController, public navCtrl: NavController, public http: Http, public ms : mapscripts, public ps : profilscripts) { 
       this.id = navParams.get('id');
       this.http = http;
       this.loadLieu();
@@ -156,7 +157,15 @@ public loadCommentaires(){
  }
 
  addCommentaire(){
-   //To do
+  var link = this.gs.connexion + '/send-commentaire.php';
+  var myData = JSON.stringify({idLieu: this.lieu.idLieu, contenu: this.nouveauCom, idAuteur : this.ps.profil.id});
+  this.http.post(link, myData)
+    .subscribe(data => {
+      console.log(data);
+  }, error => {
+    console.log(error);
+  });
+  this.loadCommentaires();//rafraichir les commentaires
  }
 
  
