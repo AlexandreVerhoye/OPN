@@ -69,12 +69,6 @@ export class AjoutLieuPage implements OnInit {
   }, error => {
     console.log(error);
   });
-    console.log(this.nomLieu);
-    console.log(this.descLieu);
-    console.log(this.tranquillite);
-    console.log(this.installationIsChecked);
-    console.log(this.sanitaireIsChecked);
-    console.log(this.adresseToString());
     //Ajouter script de creation de lieu avec mapscripts /!\ utiliser "adresseToString()" pour l'adresse, ainsi que getX et getY pour la position du lieu
   }
 

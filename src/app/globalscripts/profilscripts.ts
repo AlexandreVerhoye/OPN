@@ -101,16 +101,6 @@ this.storage.get('id').then((val) => {
 
   
   this.testCo(); //Dev
-
-  /*
-  if(res==null){
-      this.gs.toastErreur("Erreur d'identifiant ou mot de passe", 2000);
-    }
-    else{
-    this.gs.toastBasic('Connecté !', 1000);
-    this.navCtrl.navigateRoot('/app/tabs/(home:home)');
-  }
-  */
   }
 
 
@@ -141,7 +131,14 @@ this.storage.get('id').then((val) => {
     var prenom : string = prenomInscription;
     var nom : string = nomInscription;
 
-    //Script inscription a la BD ici
+    var link = this.gs.connexion + '/send-user.php';
+    var myData = JSON.stringify({email: email, password: pass, prenom : prenom, nom : nom});
+
+    this.http.post(link, myData)
+    .subscribe(data => {
+  },error => {
+    console.log(error);
+  });
 
     this.gs.toastBasic('Vous etes maintenant inscrit, veuillez vous connecter', 3000);
   }

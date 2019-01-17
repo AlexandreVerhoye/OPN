@@ -48,7 +48,7 @@ export class ConnexionUtilisateurPage implements OnInit {
     else{
       this.gs.toastErreur("Les mots de passes ne correspondent pas.",3000);
     }
-    }
+    }else
     this.gs.toastErreur("Il manquent des informations !", 3000)
   }
 
