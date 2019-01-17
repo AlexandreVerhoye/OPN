@@ -9,7 +9,7 @@ Afin d'installer Ionic, vous aurez besoin de Node.js [disponible ici](https://no
 
 Après avoir installer Node.js, lancez une invite de commande puis entrez les commandes suivantes : 
 
-> npm install -g ionic cordova
+`npm install -g ionic cordova `
 
 Ionic est maintenant installer sur votre machine.
 
@@ -18,13 +18,16 @@ Afin de lancer l'application sur votre machine, telechargez le repertoire ci-des
 
 Ensuite, dans une invite de commande, naviguez jusqu'au dossier où vous avez deposer le repertoire a l'aide de cette commande :
 
-> cd adressedurepertoire
+`cd adressedurepertoire`
 
 Ensuite, utilisez cette commande afin de lancer l'application : 
 
-> ionic serve
+`ionic serve`
 
 Votre navigateur par défaut s'ouvrira afin d'émuler l'application.
+
+
+Crédit : Alexandre VERHOYE, Antoine HEITZMANN, Bastien PLU, David JACQUELIN, Raphaël ROCHA, Maxime TAVANT
 
 
 
