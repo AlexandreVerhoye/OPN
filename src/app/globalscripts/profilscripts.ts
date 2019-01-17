@@ -23,6 +23,10 @@ constructor(private navCtrl : NavController, private storage : Storage, private 
 this.storage.get('prenom').then((result) => {
   this.profil.prenom = result;
 });
+
+this.storage.get('id').then((val) => {
+  this.profil.id = val;
+});
 }
 
   /*Function getDay() qui permet de recevoir le jour et de le transformer en string*/
@@ -75,11 +79,14 @@ this.storage.get('prenom').then((result) => {
     this.http.post(link, myData)
     .subscribe(data => {
     var res = JSON.parse(data["_body"]);
+    console.log(data);
   
     for (var profil in res){
       this.profil.nom = res[profil].nom;
       this.profil.prenom = res[profil].prenom;
       this.profil.password = res[profil].password;
+      this.profil.id = res[profil].idMembre;
+      this.storage.set('id', res[profil].idMembre);
       this.storage.set('co', true);
       this.storage.set('email', emailInscription);
       this.storage.set('pass', passInscription);
@@ -117,6 +124,9 @@ this.storage.get('prenom').then((result) => {
       console.log('Email', val);
     });
 
+    this.storage.get('pass').then((val) => {
+      console.log('Pass', val);
+    });
     this.storage.get('pass').then((val) => {
       console.log('Pass', val);
     });

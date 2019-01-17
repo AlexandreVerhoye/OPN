@@ -30,7 +30,7 @@ export class AjoutLieuPage implements OnInit {
     this.modalCtrl.dismiss();
   }
   getIdCreateur() : number{
-    return 1;
+    return this.ps.profil.id; 
   }
 
   getX() : number{
