@@ -44,6 +44,11 @@ export class ConnexionUtilisateurPage implements OnInit {
         console.log("Les deux mots de passes correspondent :")
         this.ps.inscription(this.inscriptionMail, this.inscriptionPass, this.inscriptionPrenom, this.inscriptionNom);
         this.gs.toastBasic("Vous etes maintenant inscrit sur OPN, veuillez vous connecter.", 5000);
+        this.inscriptionMail="";
+        this.inscriptionPass="";
+        this.inscriptionPass2="";
+        this.inscriptionNom = "";
+        this.inscriptionPrenom = "";
       }
     else{
       this.gs.toastErreur("Les mots de passes ne correspondent pas.",3000);
