@@ -51,8 +51,7 @@ export class MapPage {
     
 	  this.map.locate({
       setView: true,
-      maxZoom: 15, //Zoom de 15 (assez proche)
-	    enableHighAccuracy : true
+      maxZoom: 20, //Zoom de 15 (assez proche)
     }).on('locationfound', (e) => {
       this.gs.toastBasic('Nous vous avons localisé', 1000);
       this.locatedState=true;
